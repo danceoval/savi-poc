@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   padding: 2rem;
+  font-family: 'Open Sans', sans-serif;
+  color: #242456;
 }
 
 .chat-container {
@@ -8,9 +10,11 @@
   flex-direction: column;
   width: 400px;
   margin: 0 auto;
-  border: 1px solid #ccc;
+  border: 1px solid #242456;
   border-radius: 5px;
   padding: 1rem;
+  font-family: 'Lato', sans-serif;
+  color: #242456;
 }
 
 .message-container {
@@ -39,7 +43,7 @@ input {
 
 button {
   border: none;
-  background-color: #007bff;
+  background-color: #4a49c9;
   color: white;
   border-radius: 0 5px 5px 0;
   padding: 0.5rem 1rem;
