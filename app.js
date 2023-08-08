@@ -41,7 +41,7 @@ const io = socketIo(server, {
 io.on('connection', (socket) => {
   console.log('A user connected');
 
-  const history = [['user', prepPrompt]];
+  const history = [['system', prepPrompt]];
 
   socket.on('message', async (message) => {
     console.log('Received message:', message);
