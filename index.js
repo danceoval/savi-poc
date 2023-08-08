@@ -1,4 +1,6 @@
 const {openai} = require("./config/open-ai.js")
+const prepPrompt = require("./config/prompts.js")
+
 
 const readlineSync = require('readline-sync');
 const colors = require('colors');
@@ -23,7 +25,7 @@ async function main(){
 	console.log(colors.bold.brightMagenta("🧚 Tell me about your role. 🧚"))
 	console.log(colors.bold.brightMagenta("🧚 You can type 'Exit' at any time to leave the chat 🧚"))
 
-	const history = [];
+	const history = [['user', prepPrompt]];
 
 	while(true){
 		const userInput = readlineSync.question(colors.yellow("You: "))
