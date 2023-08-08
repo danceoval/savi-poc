@@ -8,7 +8,7 @@ export const App = () => {
   const [newMessage, setNewMessage] = useState('');
 
   useEffect(() => {
-    socket.on('message', (message) => {
+    socket.on('response', (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
     });
   }, []);
