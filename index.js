@@ -4,8 +4,7 @@ const readlineSync = require('readline-sync');
 const colors = require('colors');
 
 
-async function getCompletion(content){
-	let messages = [{role: "user", content}];
+async function getCompletion(messages){
 	let model = "gpt-3.5-turbo";
 	try {
         const completion = await openai.createChatCompletion({
@@ -24,21 +23,26 @@ async function main(){
 	console.log(colors.bold.brightMagenta("🧚 Tell me about your role. 🧚"))
 	console.log(colors.bold.brightMagenta("🧚 You can type 'Exit' at any time to leave the chat 🧚"))
 
+	const history = [];
+
 	while(true){
 		const userInput = readlineSync.question(colors.yellow("You: "))
 	
+		try {	
+			const messages = history.map(([role, content]) => ({role, content}));
+			messages.push({role : 'user', content: userInput});
 
-		try {
-			const completion = await getCompletion(userInput)
-			
+			const completion = await getCompletion(messages)
 
 			if(userInput.toLowerCase() == 'exit'){
 				console.log(colors.bold.brightMagenta(completion))
 				return;
 			} else {
 				console.log(colors.bold.brightMagenta(completion))
-			}
 
+				history.push(['user', userInput])
+				history.push(['assistant', completion])
+			}
 		} catch(err){
 			console.error(colors.red(err))
 
