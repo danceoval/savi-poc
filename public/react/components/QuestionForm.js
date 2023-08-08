@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 
 export const QuestionForm = (props) => {
-  const questions = [
+    const questions = [
     "Describe your role.",
     "What are your current priorities?",
-    // "What challenges associated with those priorities do you face?",
-    // "What kind of data does your team have access to?",
-    // "How familiar is your team with AI?"
+    "What challenges associated with those priorities do you face?",
+    "What kind of data does your team have access to?",
+    "How familiar is your team with AI?"
   ];
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState(Array(questions.length).fill(''));
-  
+  const [userAnswers, setUserAnswers] = useState(Array(questions.length)
+    .fill('')
+    .map((el, idx) => {
+      return {question : questions[idx], answer : ''}
+    }));
   const handleAnswerChange = (event) => {
     const updatedAnswers = [...userAnswers];
-    updatedAnswers[currentQuestionIndex] = event.target.value;
+    updatedAnswers[currentQuestionIndex].answer = event.target.value;
     setUserAnswers(updatedAnswers);
   };
 
@@ -24,13 +27,18 @@ export const QuestionForm = (props) => {
     }
   };
 
+  const handleSubmit = () => {
+    props.setInfo(userAnswers)
+    props.setView('chatbot')
+  }
+
   return (
     <div className="question-form">
-      <h2>Answer the Questions</h2>
+      <h2>Tell Savi About Yourself:</h2>
       <div className="question">
         <p>{questions[currentQuestionIndex]}</p>
         <textarea
-          value={userAnswers[currentQuestionIndex]}
+          value={userAnswers[currentQuestionIndex].answer}
           onChange={handleAnswerChange}
           rows={4}
           cols={50}
@@ -45,7 +53,7 @@ export const QuestionForm = (props) => {
         {currentQuestionIndex < questions.length - 1 ? (
           <button onClick={handleNextQuestion}>Next</button>
         ) : (
-          <button onClick={() => props.setView('chatbot')}>
+          <button onClick={handleSubmit}>
             Submit
           </button>
         )}
