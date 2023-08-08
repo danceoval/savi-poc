@@ -1,15 +1,6 @@
-const {Configuration, OpenAIApi} = require("openai");
-require("dotenv").config()
+const {openai} = require("./config/open-ai.js")
 
 const readline = require('readline');
-
-
-
-const configuration = new Configuration({
-    apiKey: process.env.API_KEY
-})
-
-const openai = new OpenAIApi(configuration)
 
 
 async function getCompletion(content){
@@ -29,7 +20,7 @@ async function getCompletion(content){
 
 async function main(){
 	console.log("*** STARTING ***")
-	prompt = "Meow like a cat";
+	prompt = "make an animal sound";
 	chat = await getCompletion(prompt)
 	console.log(chat)
 	console.log("*** OVER ***")
