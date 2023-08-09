@@ -4,11 +4,52 @@ const nlp = "Natural Language Processing is great for use cases in Marketing and
 const sentiment_analysis = "Sentiment Analysis is great for Marketing, Content, and Sales Team. You can use low-code tools like Chat-GPT or Google AutoML, or create your own network. If teams have access to social media or reviews, this is a good fit."
 const predictive_analytics = "Predictive Analytics are great for teams in Marketing and Business Development. It requires a strong interest in AI and lots of data from different sources. Google AutoML is a good tool for it";
 
+const greatSample = `Proposing an AI-Enabled Solution for Enhanced Gen Z Brand Awareness: 
+Implementation Work Plan:
 
+1. Data Collection and Preparation:
+   - Collaborate with the data team to aggregate social media analytics, product reviews, and sales data.
+   - Clean and preprocess the data to ensure accuracy and consistency.
+
+2. Tool Selection:
+   - Recommend leveraging Chat-GPT for sentiment analysis due to its user-friendly interface and AI capabilities.
+   - If needed, consider utilizing Google AutoML for more advanced analysis.
+
+3. Sentiment Model Development:
+   - Train the sentiment analysis model using the collected and preprocessed data.
+   - Fine-tune the model to capture nuances in Gen Z sentiment.
+
+4. Integration with Marketing Strategy:
+   - Collaborate with the marketing team to incorporate sentiment insights into the brand's messaging and content.
+   - Develop personalized campaigns and content based on sentiment trends.
+
+5. Monitoring and Iteration:
+   - Continuously monitor sentiment trends and adjust marketing strategies accordingly.
+   - Refine the sentiment analysis model based on new data and feedback.
+
+6. Evaluation and Reporting:
+   - Regularly assess the effectiveness of the sentiment analysis-driven strategies in improving Gen Z engagement.
+   - Provide comprehensive reports to the client showcasing the impact of AI on brand awareness.
+
+Dependencies and Tools:
+- Chat-GPT or Google AutoML for sentiment analysis model development
+- Collaborative effort with the data team for data collection and preparation
+- Close partnership with the marketing team for strategy integration
+- Continuous feedback loop with the client for iterative improvements
+
+The proposed work plan ensures a seamless integration of AI into the marketing strategy, leading to increased brand awareness and engagement among Gen Z consumers.
+`;
 
 function generateBulletList(arr){
-  return arr.map((item) => {
-    return `* Question: ${item.question}, Answer: ${item.answer}`;
+  const keys = [
+  'Role: ', 
+  'Current Priorities: ', 
+  'Associated Challenge: ', 
+  'Accessible Data:',
+  "Team's AI Familiarity: " 
+ ];
+  return arr.map((item, idx) => {
+    return `- ${keys[idx]}: ${item.answer}`;
   }).join('\n');
 };
 
@@ -17,13 +58,8 @@ function createPrompt(survey) {
 	const surveyStr = generateBulletList(survey);
 
 	const prepPrompt = `
-		You are an expert strategy consultant, named Savi with 10 years of experience. 
-		Your goal is to suggest a relevant use case for AI that they approve of. 
-
-		You have recieved this information from the client regarding their role, current strategic priorities, and associated challenges. 
-		You have also received information on the types of data their team has access to, and their comfort with AI.
-
-		Client Information: 
+		Your objective is to propose a relevant AI use case to your client that aligns with their role, priorities, challenges, and existing data resources. 
+		Once the client approves the use case, you will create a comprehensive work plan for implementing it, highlighting the necessary tools and dependencies
 
 		${surveyStr}
 
@@ -34,9 +70,10 @@ function createPrompt(survey) {
 		* ${nlp}
 		* ${sentiment_analysis}  
 
-		When suggesting a use case, make sure the client agrees to it before proceeding.
-		When they have approved a suggested use case, create a work plan for implementing it. Include your reasoning and any specific tools or dependencies.
-
+		Suggest one use case at a time. Give a short overview of the use case and a 1-2 sentence description. 
+		Make sure the client agrees to it before proceeding.
+		When they have approved a suggested use case, create a work plan for implementing it. Include any specific tools or dependencies.
+		Share one step of the work plan at a time. 
 	`;
 
 	return prepPrompt;

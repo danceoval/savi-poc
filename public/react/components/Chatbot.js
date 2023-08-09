@@ -5,9 +5,9 @@ import io from 'socket.io-client';
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
 export const Chatbot = (props) => {
-	const intro = `🧚 Hello, I am Savi! Your fairy AI assistant! Let me know when you're ready to get started! 🧚`;
-  	const [messages, setMessages] = useState([intro]);
-  	const [newMessage, setNewMessage] = useState('');
+	const intro = `🧚 Hello, I am Savi! Your fairy AI assistant! Just one moment while I do my magic! 🧚`;
+  const [messages, setMessages] = useState([intro]);
+  const [newMessage, setNewMessage] = useState('');
 
 	useEffect(() => {
 
@@ -18,6 +18,7 @@ export const Chatbot = (props) => {
 		});
 		
 	}, []);
+
 
 
   const handleMessageSend = () => {

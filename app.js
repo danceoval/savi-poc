@@ -43,10 +43,11 @@ io.on('connection', (socket) => {
   let history; 
 
   socket.on('userConnected', async (info) => {
-    console.log("SURVEY SAYS, ", info)
     prompt = createPrompt(info);
-    console.log("FULL PROMPS ", prompt)
-    history = [['system', 'You are a McKinsey Consultant']]
+    history = [['system', prompt]]
+    const messages = history.map(([role, content]) => ({role, content}));
+    const completedResponse = await getCompletion(messages)
+    io.emit('response', completedResponse); // Broadcast the message to front-end
   })
 
   socket.on('message', async (message) => {
