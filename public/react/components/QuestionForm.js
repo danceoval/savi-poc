@@ -45,7 +45,7 @@ export const QuestionForm = (props) => {
           />
         </div>
       ))}
-      <div className="button-group">
+      <div className="button-container">
         <button type="submit">Submit</button>
       </div>
     </form>

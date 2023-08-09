@@ -23,13 +23,20 @@ export const Chatbot = (props) => {
     });
   }, []);
 
-  const handleMessageSend = () => {
-    if (newMessage.trim() !== '') {
-      setLoading(true); // Set loading to true when sending message
-      socket.emit('message', newMessage);
-      setNewMessage('');
-    }
+
+  const handleButtonClick = (message) => {
+    socket.emit('message', message);
+    setLoading(true); // Set loading to true when sending message
+    setNewMessage('');
   };
+
+  // const handleMessageSend = () => {
+  //   if (newMessage.trim() !== '') {
+  //     setLoading(true); // Set loading to true when sending message
+  //     socket.emit('message', newMessage);
+  //     setNewMessage('');
+  //   }
+  // };
 
   const addNewLineAfterSentences = (inputString) => {
     // Split the input string into an array of sentences
@@ -52,15 +59,14 @@ export const Chatbot = (props) => {
         ))}
       </div>
       {loading  ? <div className='loader-dots'> Loading</div>  : (
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="Type a message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-          />
-          <button onClick={handleMessageSend}>Send</button>
-        </div>
+        <div className="button-container">
+        <button onClick={() => handleButtonClick("Show me the implementation plan and dependencies")}>
+          Show me the implementation plan and dependencies
+        </button>
+        <button onClick={() => handleButtonClick("Show me a different use case")}>
+          Show me a different use case
+        </button>
+      </div>
       )}
     </div>
   );
