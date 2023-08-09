@@ -1,7 +1,6 @@
 /*
 TODO
 
-* Instead of chat, give "Show me the implementation plan and dependencies", "Show me a different use case" buttons.
 * Instead of chat, give "Implement the recommendation", "Show me a different use case" buttons.
 * Same for implementation plan. "The following is the implementation plan and dependencies to consider"
 
@@ -13,9 +12,11 @@ DONE
 * Left-align text, with space between paragraphs (like ChatGPT) x
 * Space between bullet points.  x
 * Make field wider  x
+* Change input to Open Sans *
 * Make Savi sounds more human. "I would recommend the following use for your company based on my AI and business expertise and your personal situation" x
 * Loading Message in between prompts, specifically implementation.
 * Steal phrase from pitch deck for title "Savi AI you trusted assistant" x
+* Instead of chat, give "Show me the implementation plan and dependencies", "Show me a different use case" buttons.
 
 */
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
 import loading from '../images/loading.gif'
+import {ButtonContainer} from './ButtonContainer'
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
@@ -13,6 +14,7 @@ export const Chatbot = (props) => {
   const [messages, setMessages] = useState([intro]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true); // State to track loading
+  const [stage, setStage] = useState('Discovery')
 
   useEffect(() => {
     socket.emit('userConnected', props.info);
@@ -24,19 +26,23 @@ export const Chatbot = (props) => {
   }, []);
 
 
-  const handleButtonClick = (message) => {
+  const handleButtonClick = (txt) => {
+    let message;
+    if(txt == 'Show'){
+      message = "Show me the implementation plan and dependencies"
+      setStage('Implement')
+    } else if(txt == 'Plan') {
+      message = "Implement this plan"
+      setStage('Implement')
+    } else {
+      message = "Recommend another suitable use case"
+      setStage('Discovery')
+    }
     socket.emit('message', message);
     setLoading(true); // Set loading to true when sending message
     setNewMessage('');
   };
 
-  // const handleMessageSend = () => {
-  //   if (newMessage.trim() !== '') {
-  //     setLoading(true); // Set loading to true when sending message
-  //     socket.emit('message', newMessage);
-  //     setNewMessage('');
-  //   }
-  // };
 
   const addNewLineAfterSentences = (inputString) => {
     // Split the input string into an array of sentences
@@ -58,16 +64,9 @@ export const Chatbot = (props) => {
           </div>
         ))}
       </div>
-      {loading  ? <div className='loader-dots'> Loading</div>  : (
-        <div className="button-container">
-        <button onClick={() => handleButtonClick("Show me the implementation plan and dependencies")}>
-          Show me the implementation plan and dependencies
-        </button>
-        <button onClick={() => handleButtonClick("Show me a different use case")}>
-          Show me a different use case
-        </button>
-      </div>
-      )}
+      {
+        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} handleButtonClick={handleButtonClick} /> )
+      }
     </div>
   );
 };

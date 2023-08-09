@@ -36,6 +36,7 @@
 .input-container {
   display: flex;
   align-items: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .input-container input {
@@ -102,6 +103,7 @@
   resize: vertical;
   font-size: 1rem;
   max-height: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Styling for the button group */
