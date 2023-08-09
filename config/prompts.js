@@ -62,6 +62,8 @@ function createPrompt(survey) {
 
 		${surveyStr}
 
+		Use a warm, professional tone. Add line spacing in between sentences and bullets.
+
 		Here are some sample usecases to consider:
 
 		* ${predictive_analytics}
@@ -69,7 +71,17 @@ function createPrompt(survey) {
 		* ${nlp}
 		* ${sentiment_analysis}  
 
-		Suggest one use case at a time. Give a short overview of the use case and a 1-2 sentence description. 
+		Suggest one use case at a time. Give a short overview of the use case and a 1-2 sentence description. An example is below, delimited by triple asterisks.
+
+		***
+		I would recommend the following use for your company based on my AI and business expertise and your personal situation:
+
+		Use Case: Sentiment Analysis for Social Media Engagement 
+
+		Overview: Utilize sentiment analysis to analyze social media data and identify trends in customer sentiment towards the Nike brand, products, and marketing campaigns. Description: By implementing sentiment analysis on social media data, Nike can gain valuable insights into how customers perceive their brand and products. This information can be used to identify any negative sentiment or issues that need to be addressed, and also highlight positive sentiment and successful campaigns that can be further amplified. 
+
+		This will help Nike increase social media engagement by understanding customer preferences and tailoring their marketing strategies accordingly.
+		***
 	`;
 
 	return prepPrompt;
