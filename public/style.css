@@ -36,28 +36,85 @@
   display: flex;
 }
 
-input {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
+#logo{
+  max-width: 200px;
+  margin: auto;
 }
 
-textarea {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-  color: #4a49c9;
-  font-family: 'Lato', sans-serif;
+/* Styling for the entire form container */
+.question-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Styling for the question sections */
+.question {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Styling for the question text */
+.question p {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #242456;
+  font-family: "Lato", sans-serif;
+
+}
+
+/* Styling for the textarea input */
+.question textarea {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  resize: vertical;
   font-size: 1rem;
+  max-height: 1.5rem;
 }
 
-button {
+/* Styling for the button group */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Styling for the buttons */
+.button-group button {
+  width: 90%; /* Make the buttons wider */
+  margin: 10px auto; /* Add spacing between buttons */
+  padding: 10px 20px;
   border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+}
+
+
+.button-group button[type="submit"] {
   background-color: #4a49c9;
   color: white;
-  border-radius: 0 5px 5px 0;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+}
+
+.button-group button[type="submit"]:hover {
+  background-color: #242456;
+}
+
+.button-group button[type="button"] {
+  background-color: #ddd;
+  color: #333;
+}
+
+.button-group button[type="button"]:hover {
+  background-color: #ccc;
 }

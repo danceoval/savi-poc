@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import { QuestionForm } from './QuestionForm'
 import { Chatbot } from './Chatbot';
-
+import logo from '../images/logo.svg'
 
 export const App = () => {
   
@@ -11,7 +11,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <h1>Chat w/ Savi</h1>
+      <img src={logo} id="logo" />
       {
         view == 'survey' ?  < QuestionForm setView={setView} setInfo={setInfo}/> : < Chatbot info={info}/>
       }

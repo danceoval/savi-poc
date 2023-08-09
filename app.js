@@ -1,3 +1,23 @@
+/*
+TODO
+
+* Make form all at once, instead of 1-by-1
+* Space out prev/next
+* Savvy logo at top instead of Chat w/ Savi
+* Form seems small, look at google form. Font too small
+* Loading Message in between prompts, specifically implementation.
+* Left-align text, with space between paragraphs (like ChatGPT) 
+* Space between bullet points. 
+* Instead of chat, give "Show me the implementation plan and dependencies", "Show me a different use case" buttons.
+* Instead of chat, give "Implement the recommendation", "Show me a different use case" buttons. 
+* Steal phrase from pitch deck for title "Savi AI you trusted assistance"
+* Make field wider 
+* Make Savi sounds more human. "I would recommend the following use for your company based on my AI and business expertise and your personal situation"
+* Same for implementation plan. "The following is the implementation plan and dependencies to consider"
+
+*/
+
+
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
