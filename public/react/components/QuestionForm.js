@@ -5,9 +5,9 @@ export const QuestionForm = (props) => {
   const questions = [
     "Describe your role.",
     "What are your current priorities?",
-    "What challenges associated with those priorities do you face?",
-    "What kind of data does your team have access to?",
-    "How familiar is your team with AI?"
+    // "What challenges associated with those priorities do you face?",
+    // "What kind of data does your team have access to?",
+    // "How familiar is your team with AI?"
   ];
 
   const [userAnswers, setUserAnswers] = useState(Array(questions.length)

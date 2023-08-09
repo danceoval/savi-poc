@@ -54,7 +54,7 @@ function generateBulletList(arr){
 };
 
 
-function createPrompt(survey) {
+function createManagerPrompt(survey) {
 	const surveyStr = generateBulletList(survey);
 
 	const prepPrompt = `
@@ -89,6 +89,19 @@ function createPrompt(survey) {
 
 }
 
+function createEmployeePrompt(topic){
+	const prepPrompt = `
+		You are an AI consultant helping an employee apply the following AI use-case at work:
+
+		${topic}
+
+		For 3 of the core topics required to implement the use case, create a step-by-step learning plan. 
+		Include resources (e.g, online courses, article, videos, workshop registration link, etc.) that the employee may use to upskill in relevant AI tools, topics, and technologies. 
+	`;
+
+	return prepPrompt
+}
 
 
-module.exports = createPrompt
+
+module.exports = { createManagerPrompt, createEmployeePrompt}

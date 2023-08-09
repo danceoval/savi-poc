@@ -1,26 +1,3 @@
-/*
-TODO
-
-* Instead of chat, give "Implement the recommendation", "Show me a different use case" buttons.
-* Same for implementation plan. "The following is the implementation plan and dependencies to consider"
-
-DONE
-* Make form all at once, instead of 1-by-1 X
-* Space out prev/next X
-* Savvy logo at top instead of Chat w/ Savi x 
-* Form seems small, look at google form. Font too small x
-* Left-align text, with space between paragraphs (like ChatGPT) x
-* Space between bullet points.  x
-* Make field wider  x
-* Change input to Open Sans *
-* Make Savi sounds more human. "I would recommend the following use for your company based on my AI and business expertise and your personal situation" x
-* Loading Message in between prompts, specifically implementation.
-* Steal phrase from pitch deck for title "Savi AI you trusted assistant" x
-* Instead of chat, give "Show me the implementation plan and dependencies", "Show me a different use case" buttons.
-
-*/
-
-
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -30,7 +7,7 @@ const bodyParser = require('body-parser')
 const server = http.createServer(app);
 
 const {openai} = require("./config/open-ai.js")
-const createPrompt = require("./config/prompts.js")
+const {createManagerPrompt, createEmployeePrompt} = require("./config/prompts.js")
 
 const PORT = process.env.PORT || 3000;
 
@@ -66,7 +43,16 @@ io.on('connection', (socket) => {
   let history; 
 
   socket.on('userConnected', async (info) => {
-    prompt = createPrompt(info);
+    prompt = createManagerPrompt(info);
+    history = [['system', prompt]]
+    const messages = history.map(([role, content]) => ({role, content}));
+    const completedResponse = await getCompletion(messages)
+    io.emit('response', completedResponse); // Broadcast the message to front-end
+  })
+
+  socket.on('employeeConnected', async (info) => {
+    console.log("USE CASE FROM EMPLPOYEE ", info)
+    prompt = createEmployeePrompt(info);
     history = [['system', prompt]]
     const messages = history.map(([role, content]) => ({role, content}));
     const completedResponse = await getCompletion(messages)

@@ -7,17 +7,25 @@ import {ButtonContainer} from './ButtonContainer'
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
 export const Chatbot = (props) => {
-  const intro = `🧚 
+  const introManager = `🧚 
   Hello, I am Savi! 
   As your trusted assistant, your team will unlock a new realm of unparalleled efficiency, effectiveness, and performance.
   🧚`;
-  const [messages, setMessages] = useState([intro]);
+  const introEmployee =  `🧚 
+  Hello, I am Savi! 
+  As your trusted coach, I will guide you to using AI in your role!
+  🧚`;
+  const [messages, setMessages] = useState([introManager]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true); // State to track loading
   const [stage, setStage] = useState('Discovery')
+  const [useCase, setuseCase] = useState('')
 
   useEffect(() => {
-    socket.emit('userConnected', props.info);
+    if(props.user == "manager"){
+      socket.emit('userConnected', props.info);
+    }
+    
 
     socket.on('response', (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
@@ -32,8 +40,11 @@ export const Chatbot = (props) => {
       message = "Show me the implementation plan and dependencies"
       setStage('Implement')
     } else if(txt == 'Plan') {
-      message = "Implement this plan"
+      console.log("MMM", messages)
+      setuseCase(messages.slice(-1))
+      props.setUser('Employee')
       setStage('Implement')
+      socket.emit('employeeConnected', messages.slice(-1));
     } else {
       message = "Recommend another suitable use case"
       setStage('Discovery')
@@ -41,6 +52,13 @@ export const Chatbot = (props) => {
     socket.emit('message', message);
     setLoading(true); // Set loading to true when sending message
     setNewMessage('');
+  };
+
+  const handleMessageSend = () => {
+    if (newMessage.trim() !== '') {
+      socket.emit('message', newMessage);
+      setNewMessage('');
+    }
   };
 
 
@@ -60,12 +78,12 @@ export const Chatbot = (props) => {
       <div className="message-container">
         {messages.map((message, index) => (
           <div key={index} className="message">
-            {addNewLineAfterSentences(message)}
+            {props.user == 'manager' ? addNewLineAfterSentences(message) : message}
           </div>
         ))}
       </div>
       {
-        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} handleButtonClick={handleButtonClick} /> )
+        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} handleButtonClick={handleButtonClick} user={props.user} setNewMessage={setNewMessage} newMessage={newMessage} setuseCase={setuseCase}/> )
       }
     </div>
   );
