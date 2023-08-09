@@ -37,15 +37,20 @@ export const Chatbot = (props) => {
             </div>
           ))}
         </div>
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="Type a message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-          />
-          <button onClick={handleMessageSend}>Send</button>
-        </div>
+        {
+          messages.length <= 1 ? null : (
+              <div className="input-container">
+                <input
+                  type="text"
+                  placeholder="Type a message..."
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                />
+                <button onClick={handleMessageSend}>Send</button>
+              </div>
+          )
+
+        }
       </div>
   )
 

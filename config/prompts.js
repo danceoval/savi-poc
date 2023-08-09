@@ -59,7 +59,6 @@ function createPrompt(survey) {
 
 	const prepPrompt = `
 		Your objective is to propose a relevant AI use case to your client that aligns with their role, priorities, challenges, and existing data resources. 
-		Once the client approves the use case, you will create a comprehensive work plan for implementing it, highlighting the necessary tools and dependencies
 
 		${surveyStr}
 
@@ -71,9 +70,6 @@ function createPrompt(survey) {
 		* ${sentiment_analysis}  
 
 		Suggest one use case at a time. Give a short overview of the use case and a 1-2 sentence description. 
-		Make sure the client agrees to it before proceeding.
-		When they have approved a suggested use case, create a work plan for implementing it. Include any specific tools or dependencies.
-		Share one step of the work plan at a time. 
 	`;
 
 	return prepPrompt;
