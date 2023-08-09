@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export const QuestionForm = (props) => {
     const questions = [
@@ -15,6 +16,7 @@ export const QuestionForm = (props) => {
     .map((el, idx) => {
       return {question : questions[idx], answer : ''}
     }));
+
   const handleAnswerChange = (event) => {
     const updatedAnswers = [...userAnswers];
     updatedAnswers[currentQuestionIndex].answer = event.target.value;

@@ -4,15 +4,19 @@ import io from 'socket.io-client';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
-export const Chatbot = () => {
-	const intro = `🧚 Hello, I am Savi! Your fairy AI assistant! To get started, please tell me about your role 🧚`;
+export const Chatbot = (props) => {
+	const intro = `🧚 Hello, I am Savi! Your fairy AI assistant! Let me know when you're ready to get started! 🧚`;
   	const [messages, setMessages] = useState([intro]);
   	const [newMessage, setNewMessage] = useState('');
 
 	useEffect(() => {
+
+		socket.emit('userConnected', props.info)
+
 		socket.on('response', (message) => {
 			setMessages((prevMessages) => [...prevMessages, message]);
 		});
+		
 	}, []);
 
 

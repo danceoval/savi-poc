@@ -3,10 +3,11 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 const app = express();
+const bodyParser = require('body-parser')
 const server = http.createServer(app);
 
 const {openai} = require("./config/open-ai.js")
-const prepPrompt = require("./config/prompts.js")
+const createPrompt = require("./config/prompts.js")
 
 const PORT = process.env.PORT || 3000;
 
@@ -26,7 +27,6 @@ async function getCompletion(messages){
 
 
 
-
 /* Socket Setup */
 
 const io = socketIo(server, {
@@ -40,8 +40,14 @@ const io = socketIo(server, {
 
 io.on('connection', (socket) => {
   console.log('A user connected');
+  let history; 
 
-  const history = [['system', prepPrompt]];
+  socket.on('userConnected', async (info) => {
+    console.log("SURVEY SAYS, ", info)
+    prompt = createPrompt(info);
+    console.log("FULL PROMPS ", prompt)
+    history = [['system', 'You are a McKinsey Consultant']]
+  })
 
   socket.on('message', async (message) => {
     console.log('Received message:', message);
