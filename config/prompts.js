@@ -95,7 +95,7 @@ function createEmployeePrompt(topic){
 
 		${topic}
 
-		For 3 of the core topics required to implement the use case, create a step-by-step learning plan. 
+		For the first core topic required to implement the use case, create a step-by-step learning plan. 
 		Include resources (e.g, online courses, article, videos, workshop registration link, etc.) that the employee may use to upskill in relevant AI tools, topics, and technologies. 
 	`;
 

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-import { ManagerView } from './ManagerView'
-import { EmployeeView } from './EmployeeView'
-
+import { QuestionForm } from './QuestionForm'
+import { Chatbot } from './Chatbot';
 import logo from '../images/logo.svg'
+
 
 export const App = () => {
   
@@ -15,7 +15,7 @@ export const App = () => {
     <div className="App">
       <img src={logo} id="logo" />
       {
-        user == "manager" ? <ManagerView setView={setView} setInfo={setInfo} info={info} user={user} view={view} setUser={setUser} /> : <EmployeeView info={info} user={user} setUser={setUser}/>
+        view == 'survey' ?  < QuestionForm setView={setView} setInfo={setInfo}/> : < Chatbot info={info}/>
       }
     </div>
   );
