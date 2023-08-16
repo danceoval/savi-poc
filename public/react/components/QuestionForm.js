@@ -5,9 +5,16 @@ export const QuestionForm = (props) => {
   const questions = [
     "Describe your role.",
     "What are your current priorities?",
-    // "What challenges associated with those priorities do you face?",
-    // "What kind of data does your team have access to?",
-    // "How familiar is your team with AI?"
+    "What challenges associated with those priorities do you face?",
+    "What kind of data does your team have access to?",
+    "How familiar is your team with AI?",
+    "Are there processes/tasks that you think could be automated to improve efficiency?",
+    "Are there specific customer segments you struggle to reach effectively?",
+    "How do you measure the success of your marketing campaigns?",
+    "Who are your main competitors, and how do you differentiate yourselves from them?",
+    "Are there aspects of your competitors' marketing strategies that you'd like to emulate or outperform?",
+    "Can you describe the typical journey a customer takes from awareness to purchase?",
+    "How do you currently personalize your interactions with customers?",
   ];
 
   const [userAnswers, setUserAnswers] = useState(Array(questions.length)
