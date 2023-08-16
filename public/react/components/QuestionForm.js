@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 export const QuestionForm = (props) => {
   const questions = [
@@ -17,6 +16,12 @@ export const QuestionForm = (props) => {
     "How do you currently personalize your interactions with customers?",
   ];
 
+  const questionsPerPage = 6;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const startIndex = (currentPage - 1) * questionsPerPage;
+  const endIndex = startIndex + questionsPerPage;
+
   const [userAnswers, setUserAnswers] = useState(Array(questions.length)
     .fill('')
     .map((el, idx) => {
@@ -27,6 +32,14 @@ export const QuestionForm = (props) => {
     const updatedAnswers = [...userAnswers];
     updatedAnswers[questionIndex].answer = event.target.value;
     setUserAnswers(updatedAnswers);
+  };
+
+  const handlePrevious = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(questions.length / questionsPerPage)));
   };
 
   const handleSubmit = (event) => {
@@ -41,19 +54,27 @@ export const QuestionForm = (props) => {
 
   return (
     <form className="question-form" onSubmit={handleSubmit}>
-      {questions.map((question, index) => (
-        <div className="question" key={index}>
+      {questions.slice(startIndex, endIndex).map((question, index) => (
+        <div className="question" key={startIndex + index}>
           <p>{question}</p>
           <textarea
-            value={userAnswers[index].answer}
-            onChange={(event) => handleAnswerChange(event, index)}
+            value={userAnswers[startIndex + index].answer}
+            onChange={(event) => handleAnswerChange(event, startIndex + index)}
             rows={4}
             cols={50}
           />
         </div>
       ))}
       <div className="button-container">
-        <button type="submit">Submit</button>
+        {currentPage > 1 && (
+          <button type="button" onClick={handlePrevious}>Previous</button>
+        )}
+        {currentPage < Math.ceil(questions.length / questionsPerPage) && (
+          <button type="button" onClick={handleNext}>Next</button>
+        )}
+        {currentPage === Math.ceil(questions.length / questionsPerPage) && (
+          <button type="submit">Submit</button>
+        )}
       </div>
     </form>
   );
