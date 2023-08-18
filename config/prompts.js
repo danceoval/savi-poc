@@ -106,6 +106,10 @@ function createEmployeePrompt(topic){
 
 		For the first core topic required to implement the use case, create a step-by-step learning plan. 
 		Include resources (e.g, online courses, article, videos, workshop registration link, etc.) that the employee may use to upskill in relevant AI tools, topics, and technologies. 
+		
+		Please include any specific tools or technologies needed to complete the learning plan at the end delimited by brackets.
+
+		Example: ['Google AutoML', 'Python Programming']
 	`;
 
 	return prepPrompt

@@ -14,6 +14,7 @@ export const ButtonContainer = (props) => {
         <ButtonListEmployee
           handleButtonClick={props.handleButtonClick}
           stage={props.stage}
+          messages={props.messages}
         />
       )}
     </div>

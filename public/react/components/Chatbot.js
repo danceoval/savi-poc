@@ -50,10 +50,14 @@ export const Chatbot = (props) => {
       socket.emit('employee-message', plan);
       setLoading(true); // Set loading to true when sending message
       setNewMessage('');
-    } else {
+    } else if(txt == 'Recommend') {
       message = "Recommend another suitable use case"
       setStage('Discovery')
       socket.emit('message', message);
+      setLoading(true); // Set loading to true when sending message
+      setNewMessage('');
+    } else { //Employee Q
+      socket.emit('message', "Give me a learning plan for " + txt);
       setLoading(true); // Set loading to true when sending message
       setNewMessage('');
     }
@@ -77,12 +81,12 @@ export const Chatbot = (props) => {
       <div className="message-container">
         {messages.map((message, index) => (
           <div key={index} className="message">
-            {stage == 'Plan' ? message : addNewLineAfterSentences(message)}
+            {stage == 'Implement' ? message : addNewLineAfterSentences(message)}
           </div>
         ))}
       </div>
       {
-        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} handleButtonClick={handleButtonClick} /> )
+        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} handleButtonClick={handleButtonClick} messages={messages}/> )
       }
     </div>
   );
