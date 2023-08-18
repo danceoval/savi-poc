@@ -40,13 +40,22 @@ Dependencies and Tools:
 The proposed work plan ensures a seamless integration of AI into the marketing strategy, leading to increased brand awareness and engagement among Gen Z consumers.
 `;
 
+
 function generateBulletList(arr){
   const keys = [
   'Role: ', 
   'Current Priorities: ', 
   'Associated Challenge: ', 
   'Accessible Data:',
-  "Team's AI Familiarity: " 
+  "Team's AI Familiarity: ",
+  "Processes and tasks that could be automated: ",
+  "Specific customer segments to target: ",
+  "How successful marketing campaings are measured: ",
+  "Our main competitors, and how we are differentiated: ",
+  "Aspects of competitors' marketing strategies to emulate our outperform: ",
+  "Typical customer journey from awareness to purchase: ",
+  "How interactions with customers are currently personalized: "
+
  ];
   return arr.map((item, idx) => {
     return `- ${keys[idx]}: ${item.answer}`;
