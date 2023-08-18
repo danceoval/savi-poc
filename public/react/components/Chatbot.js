@@ -7,11 +7,17 @@ import {ButtonContainer} from './ButtonContainer'
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
 export const Chatbot = (props) => {
-  const intro = `🧚 
+  const introManager = `🧚 
   Hello, I am Savi! 
   As your trusted assistant, your team will unlock a new realm of unparalleled efficiency, effectiveness, and performance.
   🧚`;
-  const [messages, setMessages] = useState([intro]);
+
+  const introEmployee =  `🧚 
+  Hello, I am Savi! 
+  As your trusted coach, I will guide you to using AI in your role!
+  🧚`;
+
+  const [messages, setMessages] = useState([introManager]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true); // State to track loading
   const [stage, setStage] = useState('Discovery')
@@ -28,20 +34,30 @@ export const Chatbot = (props) => {
 
   const handleButtonClick = (txt) => {
     let message;
-    console.log("TEXT FROM CLICK", txt)
     if(txt == 'Show'){
       message = "Show me the implementation plan and dependencies"
       setStage('Show')
+      socket.emit('message', message);
+      setLoading(true); // Set loading to true when sending message
+      setNewMessage('');
     } else if(txt == 'Plan') {
       message = "Implement this plan"
+      console.log("MESSAGES ON STATE", messages)
       setStage('Implement')
+      const plan = [...messages].slice(-1)
+      console.log("THE PLAN KEEPS COMING UPAGAIN ", plan)
+      setMessages([introEmployee])
+      socket.emit('employee-message', plan);
+      setLoading(true); // Set loading to true when sending message
+      setNewMessage('');
     } else {
       message = "Recommend another suitable use case"
       setStage('Discovery')
+      socket.emit('message', message);
+      setLoading(true); // Set loading to true when sending message
+      setNewMessage('');
     }
-    socket.emit('message', message);
-    setLoading(true); // Set loading to true when sending message
-    setNewMessage('');
+    
   };
 
 
@@ -61,7 +77,7 @@ export const Chatbot = (props) => {
       <div className="message-container">
         {messages.map((message, index) => (
           <div key={index} className="message">
-            {addNewLineAfterSentences(message)}
+            {stage == 'Plan' ? message : addNewLineAfterSentences(message)}
           </div>
         ))}
       </div>

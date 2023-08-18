@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
     io.emit('response', completedResponse); // Broadcast the message to front-end
   })
 
-  socket.on('employeeConnected', async (info) => {
+  socket.on('employee-message', async (info) => {
     console.log("USE CASE FROM EMPLPOYEE ", info)
     prompt = createEmployeePrompt(info);
     history = [['system', prompt]]
@@ -60,15 +60,14 @@ io.on('connection', (socket) => {
   })
 
   socket.on('message', async (message) => {
-    console.log('Received message:', message);
     try {
-      const messages = history.map(([role, content]) => ({role, content}));
-      messages.push({role : 'user', content: message});
-      const completedResponse = await getCompletion(messages)
-      io.emit('response', completedResponse); // Broadcast the message to front-end
-    } catch (e){
-      console.error(e)
-    }
+        const messages = history.map(([role, content]) => ({role, content}));
+        messages.push({role : 'user', content: message});
+        const completedResponse = await getCompletion(messages)
+        io.emit('response', completedResponse); // Broadcast the message to front-end
+      } catch (e){
+        console.error(e)
+      }
     
   });
 
