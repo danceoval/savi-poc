@@ -28,9 +28,10 @@ export const Chatbot = (props) => {
 
   const handleButtonClick = (txt) => {
     let message;
+    console.log("TEXT FROM CLICK", txt)
     if(txt == 'Show'){
       message = "Show me the implementation plan and dependencies"
-      setStage('Implement')
+      setStage('Show')
     } else if(txt == 'Plan') {
       message = "Implement this plan"
       setStage('Implement')

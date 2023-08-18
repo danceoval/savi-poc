@@ -15,7 +15,7 @@ export const App = () => {
     <div className="App">
       <img src={logo} id="logo" />
       {
-        view == 'survey' ?  < QuestionForm setView={setView} setInfo={setInfo}/> : < Chatbot info={info}/>
+        view == 'survey' ?  < QuestionForm setView={setView} setInfo={setInfo}/> : < Chatbot info={info} user={user}/>
       }
     </div>
   );
