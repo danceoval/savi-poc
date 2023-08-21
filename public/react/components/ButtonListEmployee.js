@@ -14,7 +14,7 @@ function extractRecommendedTools(inputArr) {
 
 export const ButtonListEmployee = (props) => {
   const plan = [...props.messages].slice(-1)
-  const toolArr = ["Python Programming", "Google AutoML"]
+  const toolArr = props.tools || ["Python Programming", "Google AutoML"]
   return (
     <div>
           {

@@ -15,6 +15,7 @@ export const ButtonContainer = (props) => {
           handleButtonClick={props.handleButtonClick}
           stage={props.stage}
           messages={props.messages}
+          tools={props.tools}
         />
       )}
     </div>

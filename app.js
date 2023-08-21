@@ -50,6 +50,7 @@ io.on('connection', (socket) => {
     io.emit('response', completedResponse); // Broadcast the message to front-end
   })
 
+
   socket.on('employee-message', async (info) => {
     console.log("USE CASE FROM EMPLPOYEE ", info)
     prompt = createEmployeePrompt(info);

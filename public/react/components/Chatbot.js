@@ -21,6 +21,7 @@ export const Chatbot = (props) => {
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true); // State to track loading
   const [stage, setStage] = useState('Discovery')
+  const [tools, setToos] = useState([])
 
   useEffect(() => {
     socket.emit('userConnected', props.info);
@@ -42,10 +43,8 @@ export const Chatbot = (props) => {
       setNewMessage('');
     } else if(txt == 'Plan') {
       message = "Implement this plan"
-      console.log("MESSAGES ON STATE", messages)
       setStage('Implement')
       const plan = [...messages].slice(-1)
-      console.log("THE PLAN KEEPS COMING UPAGAIN ", plan)
       setMessages([introEmployee])
       socket.emit('employee-message', plan);
       setLoading(true); // Set loading to true when sending message
@@ -86,7 +85,7 @@ export const Chatbot = (props) => {
         ))}
       </div>
       {
-        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} handleButtonClick={handleButtonClick} messages={messages}/> )
+        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages}/> )
       }
     </div>
   );
