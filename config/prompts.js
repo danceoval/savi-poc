@@ -106,15 +106,28 @@ function createEmployeePrompt(topic){
 
 		For the first core topic required to implement the use case, create a step-by-step learning plan. 
 		Include resources (e.g, online courses, article, videos, workshop registration link, etc.) that the employee may use to upskill in relevant AI tools, topics, and technologies. 
-		
-		Please include any specific tools or technologies needed to complete the learning plan at the end delimited by brackets.
-
-		Example: ['Google AutoML', 'Python Programming']
+	
 	`;
 
 	return prepPrompt
 }
 
+function createToolPrompt(plan){
+	const prepPrompt = `
+		You are an AI instructor helping an employee follow a learning plan.
+
+		Given the following learning plan, delimited by triple asterisks return a list of specific programming langauges or technologies the learner will need to master to achieve the learning plan.
+
+		You may return the list of tools as a JSON object, like follows:
+
+		{"tools" : ['Python Programming', 'Amazon Comprehend', 'R Programming']}
+
+		***${plan}***
+	`;
+
+	return prepPrompt;
+}
 
 
-module.exports = { createManagerPrompt, createEmployeePrompt}
+
+module.exports = { createManagerPrompt, createEmployeePrompt, createToolPrompt}

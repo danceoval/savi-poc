@@ -4,12 +4,42 @@ const socketIo = require('socket.io');
 
 const app = express();
 const bodyParser = require('body-parser')
-const server = http.createServer(app);
+const {db, User} = require('./db')
+
 
 const {openai} = require("./config/open-ai.js")
-const {createManagerPrompt, createEmployeePrompt} = require("./config/prompts.js")
+const {createManagerPrompt, createEmployeePrompt, createToolPrompt} = require("./config/prompts.js")
+
 
 const PORT = process.env.PORT || 3000;
+
+/*
+Auth Setup
+*/
+
+app.post('/login', async (req, res, next) => {
+  try {
+    const user = await User.findOne({where: {email: req.body.email}})
+    if (!user) {
+      console.log('No such user found:', req.body.email)
+      res.status(401).send('Wrong username and/or password')
+    } else if (!user.correctPassword(req.body.password)) {
+      console.log('Incorrect password for user:', req.body.email)
+      res.status(401).send('Wrong username and/or password')
+    } else {
+      req.login(user, err => (err ? next(err) : res.json(user)))
+    }
+  } catch (err) {
+    next(err)
+  }
+});
+
+app.post('/logout', (req, res) => {
+  req.logout()
+  req.session.destroy()
+  res.redirect('/')
+})
+
 
 /* Chat GPT Setup */
 async function getCompletion(messages){
@@ -28,6 +58,7 @@ async function getCompletion(messages){
 
 
 /* Socket Setup */
+const server = http.createServer(app);
 
 const io = socketIo(server, {
   cors: {
@@ -72,11 +103,22 @@ io.on('connection', (socket) => {
     
   });
 
+  socket.on('get-tools', async (plan) => {
+    try {
+      const prompt = createToolPrompt(plan);
+      const completedResponse = await getCompletion(messages)
+      io.emit('set-tools', completedResponse); // Broadcast the message to front-end
+    } catch(e){
+      console.error(e)
+    }
+  })
+
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
+  await db.sync()
   console.log(`Server is running on port ${PORT}`);
 });

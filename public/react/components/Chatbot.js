@@ -21,7 +21,7 @@ export const Chatbot = (props) => {
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true); // State to track loading
   const [stage, setStage] = useState('Discovery')
-  const [tools, setToos] = useState([])
+  const [tools, setTools] = useState([])
 
   useEffect(() => {
     socket.emit('userConnected', props.info);
@@ -30,6 +30,11 @@ export const Chatbot = (props) => {
       setMessages((prevMessages) => [...prevMessages, message]);
       setLoading(false); // Turn off loading when response received
     });
+
+    socket.on('set-tools', (tools) => {
+      setTools(tools)
+    });
+    
   }, []);
 
 
@@ -47,6 +52,7 @@ export const Chatbot = (props) => {
       const plan = [...messages].slice(-1)
       setMessages([introEmployee])
       socket.emit('employee-message', plan);
+      socket.emit('get-tools', plan)
       setLoading(true); // Set loading to true when sending message
       setNewMessage('');
     } else if(txt == 'Recommend') {
