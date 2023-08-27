@@ -10,12 +10,12 @@ export const Chatbot = (props) => {
   const introManager = `🧚 
   Hello, I am Savi! 
   As your trusted assistant, your team will unlock a new realm of unparalleled efficiency, effectiveness, and performance.
-  🧚`;
+  `;
 
-  const introEmployee =  `🧚 
+  const introEmployee =  ` 
   Hello, I am Savi! 
   As your trusted coach, I will guide you to using AI in your role!
-  🧚`;
+  `;
 
   const [messages, setMessages] = useState([introManager]);
   const [newMessage, setNewMessage] = useState('');
@@ -91,7 +91,7 @@ export const Chatbot = (props) => {
         ))}
       </div>
       {
-        loading  ? <div className='loader-dots'>Working my fairy magic</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages}/> )
+        loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages}/> )
       }
     </div>
   );
