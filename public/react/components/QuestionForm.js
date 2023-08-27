@@ -4,16 +4,15 @@ export const QuestionForm = (props) => {
   const questions = [
     "Describe your role.",
     "What are your current priorities?",
-    "What challenges associated with those priorities do you face?",
-    "What kind of data does your team have access to?",
-    "How familiar is your team with AI?",
-    "Are there processes/tasks that you think could be automated to improve efficiency?",
-    "Are there specific customer segments you struggle to reach effectively?",
-    "How do you measure the success of your marketing campaigns?",
-    "Who are your main competitors, and how do you differentiate yourselves from them?",
-    "Are there aspects of your competitors' marketing strategies that you'd like to emulate or outperform?",
-    "Can you describe the typical journey a customer takes from awareness to purchase?",
-    "How do you currently personalize your interactions with customers?",
+    "How do you measure success?",
+    "What are the top three pain points in your work?",
+    "If you could have a personal assistant, what would they help you with?",
+    "Who are your users/customers/clients? How do you currently provide a good experience for them?",
+    "If you had more time, how would you serve your users better?",
+    "What kind of data (unstructured (e.g. user feedback) and structured (e.g. Excel spreadsheets)) do you have access to? How do you currently use that data?",
+    "How is your organization different from similar organizations? Are there any aspects of a competitor you wish to emulate or outperform?",
+    "Is there any particular use case or AI tool that you have taken an interest in? ",
+    "Anything else you would like to add?"
   ];
 
   const questionsPerPage = 6;

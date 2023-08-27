@@ -1,24 +1,12 @@
-Director of Marketing at Nike
+What is your role?
+What are your current priorities? 
+How do you measure success?
+What are the top three pain points in your work?
+If you could have a personal assistant, what would they help you with?
 
-We want to increase brand awareness among Gen Z.
-
-Currently our social media engagement among Gen Z has been declining 6% quarterly, with engagement on Facebook and Instagram declining the most.
-
-We have access to social media analytics (Facebook, Instagram, Twitter, TikTok), product reviews, and regional sales data.
-
-Our team is somewhat familiar with AI, and eager to learn more.
-
-Right now we don't have a great way of streamlined analysis of our social media trends to predict where we should invest for engagement.
-
-We are struggling the most to reach Gen Z customers.
-
-We measure the success of marketing campaigns based on ad watch time and click-through rates to our online store.
-
-Our main competitors are Under Armor and Lululemon. We differentiate ourselves through our strong brand awareness.
-
-We would like to emulate Under Armor's recent social media campaign.
-
-Customers usually find out about product launches through social media, and click through to buy products.
-
-We have limited personalization for customers currently.
-
+Who are your users/customers/clients? How do you currently provide a good experience for them?
+If you had more time, how would you serve your users better?
+What kind of data (unstructured (e.g. user feedback) and structured (e.g. Excel spreadsheets)) do you have access to? How do you currently use that data?
+How is your organization different from similar organizations? Are there any aspects of a competitor you wish to emulate or outperform?
+Is there any particular use case or AI tool that you have taken an interest in? 
+Anything else you would like to add?
