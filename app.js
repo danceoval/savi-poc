@@ -77,7 +77,14 @@ io.on('connection', (socket) => {
     prompt = createManagerPrompt(info);
     history = [['system', prompt]]
     const messages = history.map(([role, content]) => ({role, content}));
-    const completedResponse = await getCompletion(messages)
+    //const completedResponse = await getCompletion(messages)
+
+    const completedResponse = `
+    You should take advantage of school observation and quarterly student survey data to pinpoint teaching methods that resonate most positively with students.
+    Based on the insights, you should create a best practice playbook that he distributed to all teachers you support. 
+    You should also use sentiment analysis to quickly and accurately identify personalized improvement opportunities for each teacher and school
+    Doing all of the above will improve your effectiveness as an Educational Consultant
+    `;
     io.emit('response', completedResponse); // Broadcast the message to front-end
   })
 

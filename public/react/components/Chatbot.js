@@ -7,7 +7,7 @@ import {ButtonContainer} from './ButtonContainer'
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
 export const Chatbot = (props) => {
-  const introManager = `🧚 
+  const introManager = ` 
   Hello, I am Savi! 
   As your trusted assistant, your team will unlock a new realm of unparalleled efficiency, effectiveness, and performance.
   `;
