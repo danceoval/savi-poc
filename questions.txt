@@ -1,12 +1,28 @@
-What is your role?
-What are your current priorities? 
-How do you measure success?
-What are the top three pain points in your work?
-If you could have a personal assistant, what would they help you with?
+Director of Development for NYC Education Enablement Consultancy Firm
 
-Who are your users/customers/clients? How do you currently provide a good experience for them?
-If you had more time, how would you serve your users better?
-What kind of data (unstructured (e.g. user feedback) and structured (e.g. Excel spreadsheets)) do you have access to? How do you currently use that data?
-How is your organization different from similar organizations? Are there any aspects of a competitor you wish to emulate or outperform?
-Is there any particular use case or AI tool that you have taken an interest in? 
-Anything else you would like to add?
+Works mostly with principals (clients) and teachers. Principals looking to improve student achievement, engagement via improving teacher practice/coaching
+
+Use quarterly OKRs around teaching efficiency and NPS
+
+Pain points: 1) Staffing (NYC DOE is unpredictable, budgets fluctuate, hard to predict where work will occur). Hard to estimate volume/location of work to staff Coaches appropriately. Balancing Coach, staff time. 2) Trainings are expensive but useful, understanding when to target trainings, retreat days, community building, general work is very isolated by school. 3) Content development time and capacity
+
+Personal assistant for managing Coaches’ calendars, project management, develop and track items on work plans
+
+Client calls sales team, expresses interest in support for teachers. Request is matched to Coach by Teaching Matters, who receives work estimate. Coach sets up meeting w/ Principal, follows up when no response (pain point). Coach creates, manages agenda docs for Teacher interviews, classroom observations, log time in salesforce. Repeats with a different school. 
+
+Time is  a factor based on the conditions of the school to accelerate or hinder work
+
+Data: NYC DOE data about school, # of kids, Achievement on tests, Disabilities, etc as well as notes taken from school observations
+
+Very localized to NYC school system. Knows leaders, superintendents . Strong presence in city, will aligned w/ DOE. Room to broaden scope outside of NYC
+
+Some AI tools we’ve been wanting to explore around data viz (used tableau in the past)
+
+I'd love a personal assistant!
+
+
+
+
+
+
+
