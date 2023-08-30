@@ -18,7 +18,7 @@ Very localized to NYC school system. Knows leaders, superintendents . Strong pre
 
 Some AI tools we’ve been wanting to explore around data viz (used tableau in the past)
 
-I'd love a personal assistant!
+I'd love a personal assistant! School observations are overwhelming me. 
 
 
 

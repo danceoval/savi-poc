@@ -78,7 +78,6 @@ io.on('connection', (socket) => {
     history = [['system', prompt]]
     const messages = history.map(([role, content]) => ({role, content}));
     //const completedResponse = await getCompletion(messages)
-
     const completedResponse = `
     You should take advantage of school observation and quarterly student survey data to pinpoint teaching methods that resonate most positively with students.
     Based on the insights, you should create a best practice playbook that he distributed to all teachers you support. 

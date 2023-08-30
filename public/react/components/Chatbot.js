@@ -27,8 +27,11 @@ export const Chatbot = (props) => {
     socket.emit('userConnected', props.info);
 
     socket.on('response', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-      setLoading(false); // Turn off loading when response received
+      setTimeout(() => { // Remove when not hardcoded
+        console.log("THINKING")
+        setMessages((prevMessages) => [...prevMessages, message]);
+        setLoading(false); // Turn off loading when response received
+      }, 1800)
     });
 
     socket.on('set-tools', (tools) => {
