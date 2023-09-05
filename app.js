@@ -150,7 +150,7 @@ io.on('connection', (socket) => {
     const planResponse = `
       Let's get started!
 
-      Your current objective is — Data Collection and Preparation
+      Step 1 — Data Collection and Preparation
       
       Your goals are as follows...
       - Gather school observation data and quarterly student survey data from all relevant sources, ensuring the data is accurate and up-to-date
