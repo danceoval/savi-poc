@@ -13,6 +13,7 @@ function extractRecommendedTools(inputArr) {
 }
 
 export const ButtonListEmployee = (props) => {
+  console.log("INN EMPLOYEEEE ", props.stage)
   const plan = [...props.messages].slice(-1);
   const toolArr = props.tools || ["Vertex AI", "Sentiment Analysis"];
 
@@ -63,16 +64,27 @@ export const ButtonListEmployee = (props) => {
         <button onClick={props.handleMessageSend}>Ask Savi a Question</button>
       </div>*/}
       {/* Add the "Submit Evidence" button and file input */}
-       <div className="evidence-container">
-        <button onClick={handleFileInputChange}>Submit Evidence</button>
-        <input
-          type="file"
-          accept=".pdf"
-          ref={fileInputRef}
-          style={{ display: 'none' }}
-          onChange={handleFileChange}
-        />
-      </div>
+       {
+        props.stage == 'Show' ? (
+          <div className="evidence-container">
+            <button onClick={props.startPlan}>Let's Get Started</button>
+          </div>
+
+        ) : (
+          <div className="evidence-container">
+            <button onClick={handleFileInputChange}>Submit Evidence</button>
+            <input
+              type="file"
+              accept=".pdf"
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+              onChange={handleFileChange}
+            />
+          </div>
+
+        )
+       }
+
     </div>
   );
 };

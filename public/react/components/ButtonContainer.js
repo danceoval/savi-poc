@@ -17,6 +17,7 @@ export const ButtonContainer = (props) => {
           messages={props.messages}
           tools={props.tools}
           submitEvidence={props.submitEvidence}
+          startPlan={props.startPlan}
         />
       )}
     </div>

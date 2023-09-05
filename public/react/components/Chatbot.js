@@ -79,6 +79,14 @@ export const Chatbot = (props) => {
     
   };
 
+  const startPlan = () => {
+    console.log("STARTING PLAN")
+    setStage('Begin')
+    socket.emit('start-plan', {})
+    setLoading(true)
+    setNewMessage('')
+  }
+
 
   const addNewLineAfterSentences = (inputString) => {
     // Split the input string into an array of sentences
@@ -101,7 +109,7 @@ export const Chatbot = (props) => {
         ))}
       </div>
       {
-        loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages} submitEvidence={submitEvidence}/> )
+        loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages} submitEvidence={submitEvidence} startPlan={startPlan}/> )
       }
     </div>
   );
