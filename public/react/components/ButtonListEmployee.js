@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 
 
 function extractRecommendedTools(inputArr) {
@@ -18,9 +18,21 @@ export const ButtonListEmployee = (props) => {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
+  const fileInputRef = useRef(null);
+
+  const handleFileInputChange = () => {
+    // Trigger the file input when the button is clicked
+    fileInputRef.current.click();
+  };
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setSelectedFile(file);
+    if (file) {
+      // Invoke the submitEvidence function with the selected file
+      props.submitEvidence(file);
+      // Clear the file input
+      event.target.value = null;
+    }
   };
 
   const handleUpload = () => {
@@ -51,9 +63,15 @@ export const ButtonListEmployee = (props) => {
         <button onClick={props.handleMessageSend}>Ask Savi a Question</button>
       </div>*/}
       {/* Add the "Submit Evidence" button and file input */}
-      <div className="input-container">
-        <input type="file" onChange={handleFileChange} />
-        <button onClick={handleUpload}>Submit Evidence</button>
+       <div className="evidence-container">
+        <button onClick={handleFileInputChange}>Submit Evidence</button>
+        <input
+          type="file"
+          accept=".pdf"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          onChange={handleFileChange}
+        />
       </div>
     </div>
   );
