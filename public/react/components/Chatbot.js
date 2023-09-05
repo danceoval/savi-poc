@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 
 import loading from '../images/loading.gif'
 import {ButtonContainer} from './ButtonContainer'
+import {dummyPlan} from './dummyPlan';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
@@ -27,7 +28,7 @@ export const Chatbot = (props) => {
     socket.emit('userConnected', props.info);
 
     socket.on('response', (message) => {
-      setTimeout(() => { // Remove when not hardcoded
+      setTimeout(() => { // Remove when not
         console.log("THINKING")
         setMessages((prevMessages) => [...prevMessages, message]);
         setLoading(false); // Turn off loading when response received
@@ -40,13 +41,19 @@ export const Chatbot = (props) => {
     
   }, []);
 
+  const submitEvidence = (file) => {
+    socket.emit('send-evidence', file)
+    setLoading(true); // Set loading to true when sending message
+    setNewMessage('');
+  }
 
   const handleButtonClick = (txt) => {
     let message;
     if(txt == 'Show'){
       message = "Show me the implementation plan and dependencies"
       setStage('Show')
-      socket.emit('message', message);
+      socket.emit('show-plan', message);
+      setMessages([introEmployee])
       setLoading(true); // Set loading to true when sending message
       setNewMessage('');
     } else if(txt == 'Plan') {
@@ -94,7 +101,7 @@ export const Chatbot = (props) => {
         ))}
       </div>
       {
-        loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages}/> )
+        loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages} submitEvidence={submitEvidence}/> )
       }
     </div>
   );

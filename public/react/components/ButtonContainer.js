@@ -5,7 +5,7 @@ import { ButtonListManager } from './ButtonListManager'; // Make sure to provide
 export const ButtonContainer = (props) => {
   return (
     <div className="button-container">
-      {props.stage === 'Discovery' || props.stage === 'Show' ? (
+      {props.stage === 'Discovery' || props.stage === '' ? (
         <ButtonListManager
           handleButtonClick={props.handleButtonClick}
           stage={props.stage}
@@ -16,6 +16,7 @@ export const ButtonContainer = (props) => {
           stage={props.stage}
           messages={props.messages}
           tools={props.tools}
+          submitEvidence={props.submitEvidence}
         />
       )}
     </div>
