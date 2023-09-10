@@ -159,6 +159,9 @@ io.on('connection', (socket) => {
       - Learn more about data preparation for sentiment analysis here
 
       When you are ready, upload a spreadsheet, pdf or doc evincing your completion of these goals.
+    
+      <strong>Course: <a href="a">Intro to Vertex AI</a></strong>
+
     `;
 
     io.emit('response', planResponse);
