@@ -104,7 +104,7 @@ export const Chatbot = (props) => {
       <div className="message-container">
         {messages.map((message, index) => (
           <div key={index} className="message">
-            {stage == 'Implement' ? message : addNewLineAfterSentences(message)}
+            <div dangerouslySetInnerHTML={{__html: message}}></div>
           </div>
         ))}
       </div>

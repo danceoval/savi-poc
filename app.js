@@ -14,7 +14,7 @@ const {createManagerPrompt, createEmployeePrompt, createToolPrompt} = require(".
 const PORT = process.env.PORT || 3000;
 
 const hardcodedResponse = `
-        You should use Vertex AI to perform sentiment analysis on school observation and quarterly student survey data.
+        You should use <strong>Vertex AI</strong> to perform sentiment analysis on school observation and quarterly student survey data.
         
         
         Step 1 — Data Collection and Preparation

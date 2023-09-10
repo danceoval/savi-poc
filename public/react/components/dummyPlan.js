@@ -1,4 +1,7 @@
 export const dummyPlan = `
+
+<h4>Recommended Tool: <strong>Vertex AI</strong></h4>
+
 Step 1: Data Collection and Preparation
 Gather school observation data and quarterly student survey data from all relevant sources, ensuring the data is accurate and up-to-date.
 Preprocess the data to remove any inconsistencies, missing values, and outliers that could skew the analysis.
