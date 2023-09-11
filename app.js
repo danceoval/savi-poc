@@ -13,62 +13,49 @@ const {createManagerPrompt, createEmployeePrompt, createToolPrompt} = require(".
 
 const PORT = process.env.PORT || 3000;
 
-const hardcodedResponse = `
-        You should use <strong>Vertex AI</strong> to perform sentiment analysis on school observation and quarterly student survey data.
+const hardcodedResponse = `<h3>Sentiment Analysis with Vertex AI</h3>
         
+        <h4 class="highlight">Goals:</h4>
+        <ul>
+          <li>Prepare Teacher Interview training data for sentiment analysis</li>
+          <li>Train a Sentiment Analysis model to identify top teaching improvement opportunities</li>
+          <li>Evaluate the Sentiment Analysis model</li>
+          <li>Leverage predictions for Teacher feedback and trainings</li>
+        </ul>
         
-        Step 1 — Data Collection and Preparation
-        Gather school observation data and quarterly student survey data from all relevant sources, ensuring the data is accurate and up-to-date
-        Preprocess the data to remove any inconsistencies, missing values, and outliers that could skew the analysis
-        Organize the data into a structured format that can be easily analyzed, such as a spreadsheet
-        Learn more about data preparation for sentiment analysis here
-
+        <h4 class="highlight">Step 1 — Data Collection and Preparation</h4>
         
-        Step 2 — Sentiment Analysis
-        Perform sentiment analysis on the student survey data to quantify the positive and negative sentiments associated with different teaching methods
-        Learn about sentiment analysis here
-
+        <ol>
+          <li>Gather teacher interview notes</li>
+          <li>Clean collected data</li>
+          <li>Tag training set with Vertex AI</li>
+        </ol>
         
-        Step 3 — Identification of Best Practices 
-        Based on the analysis, pinpoint teaching methods that consistently resonate most positively with students
-        Collaborate with education experts and instructional designers, if necessary, to validate the identified best practices
-        Document these best practices in a comprehensive playbook, including explanations, examples, and implementation guidelines
-
+        <p>Learn more about data preparation for sentiment analysis <u class='highlight'>here</u></p>
         
-        Step 4 — Playbook Creation and Distribution 
-        Compile the best practices and insights into a well-structured playbook format.
-        Ensure the playbook is easily accessible and user-friendly, considering digital formats (PDFs, web pages, etc) for distribution
-        Distribute the playbook to all teachers you support, providing video recordings, training sessions, and workshops to explain its content and implementation strategies
+        <h4 class="highlight">Step 2 — Training a Sentiment Analysis model</h4>
+        <ol>
+          <li>Set up your project & environment</li>
+          <li>Create text classification dataset</li>
+          <li>Train classification model</li>
+        </ol>
         
+        <p>Learn about training a sentiment analysis model <u class='highlight'>here</u></p>.
         
-        Step 5 — Personalized Improvement Opportunities 
-        Use Vertex AI to quickly process and analyze individual teacher performance and student feedback
-        Automatically generate personalized reports for each teacher, highlighting their strengths and areas for improvement based on sentiment analysis results
-        Learn about using sentiment analysis to automate personalized report creation here
+        <h4 class="highlight">Step 3 — Identifying Improvement Opportunities from Predictions</h4> 
+        <ol>
+          <li>Analyze individual teacher performance and student feedback</li>
+          <li>Automatically generate personalized reports for each teacher, highlighting their strengths and areas for improvement</li>
+        </ol>
         
+        <p>Learn about using sentiment analysis to automate personalized report creation <u class='highlight'>here</u>.
         
-        Step 6 — Teacher Support and Continuous Improvement
-        Hold individual meetings with teachers to discuss their personalized improvement opportunities and provide guidance on implementing best practices
-        Foster a collaborative environment where teachers can share their experiences and insights with each other
-        Regularly update the playbook with new insights and practices based on ongoing data collection and analysis
-        
-        
-        Step 7 — Monitoring and Evaluation 
-        Continuously monitor the impact of the implemented best practices on student engagement, learning outcomes, and overall satisfaction
-        Collect feedback from teachers about the effectiveness and usability of the playbook, making necessary adjustments
-        Periodically review and refine the sentiment analysis algorithms to improve accuracy and relevance
-        
-        
-        Step 8 — Reporting and Communication 
-        Create reports summarizing the improvements in teaching methods and their impact on student satisfaction and learning outcomes
-        Share these reports with school administrators, stakeholders, and teachers to demonstrate the value of the implemented strategies
-        
-        
-        Step 9 — Iteration and Adaptation 
-        Regularly review the effectiveness of the playbook and the sentiment analysis process
-        Adapt the playbook and strategies as education trends, student preferences, and teaching methodologies evolve
-
-      `;
+        <h4 class="highlight">Step 4 — Teacher Support and Continuous Improvement</h4>
+        <ol>
+          <li>Hold individual meetings with teachers to discuss their personalized improvement opportunities</li>
+          <li>Foster a collaborative environment where teachers can share their experiences and insights with each other</li>
+          <li>Regularly update the playbook with new insights and practices based on ongoing data collection and analysis</li>
+        </ol>`;
 
 
 /*
@@ -136,33 +123,32 @@ io.on('connection', (socket) => {
     history = [['system', prompt]]
     const messages = history.map(([role, content]) => ({role, content}));
     //const completedResponse = await getCompletion(messages)
-    const completedResponse = `
-    You should take advantage of school observation and quarterly student survey data to pinpoint teaching methods that resonate most positively with students.
-    Based on the insights, you should create a best practice playbook that he distributed to all teachers you support. 
-    You should also use sentiment analysis to quickly and accurately identify personalized improvement opportunities for each teacher and school
-    Doing all of the above will improve your effectiveness as an Educational Consultant
-    `;
+    const completedResponse = `<span class="highlight">Thank you</span> for answering our questions!
+    We've identified an opportunitiy to use <strong><i>Sentiment Analysis</i></strong> to identify insights within teacher interview transcripts.
+    This will allow you to quickly and accurately identify personalized improvement opportunities for each teacher and school.
+    We can get your team set up using a tool called <strong class="highlight">Vertex AI</strong>. You can read more about it <u class='highlight'>here</u>.  `;
     io.emit('response', completedResponse); // Broadcast the message to front-end
   })
 
   socket.on('start-plan', async () => {
     console.log("SOCKET PLAN START")
-    const planResponse = `
-      Let's get started!
-
-      Step 1 — Data Collection and Preparation
-      
-      Your goals are as follows...
-      - Gather school observation data and quarterly student survey data from all relevant sources, ensuring the data is accurate and up-to-date
-      - Preprocess the data to remove any inconsistencies, missing values, and outliers that could skew the analysis
-      - Organize the data into a structured format that can be easily analyzed, such as a spreadsheet
-      - Learn more about data preparation for sentiment analysis here
-
-      When you are ready, upload a spreadsheet, pdf or doc evincing your completion of these goals.
+    const planResponse = `<h3 class="highlight">Step 1 — Data Collection and Preparation</h3>
     
-      <strong>Course: <a href="a">Intro to Vertex AI</a></strong>
-
-    `;
+    <p>Your goals are as follows...</p>
+    <ol>
+        <li>Gather school observation data and quarterly student survey data from all relevant sources, ensuring the data is accurate and up-to-date</li>
+        <li>Preprocess the data to remove any inconsistencies, missing values, and outliers that could skew the analysis</li>
+        <li>Organize the data into a structured format that can be easily analyzed, such as a spreadsheet</li>
+        <li>Learn more about data preparation for sentiment analysis <u class="highlight">here</u></li>
+    </ol>
+    
+    When you are ready, <i>upload a spreadsheet, pdf or doc evincing your completion of these goals!</i>
+    
+    <h4>Courses:</h4>
+      <ul>
+        <li class="highlight"><u>Getting Started with Vertex AI</u></span>
+        <li class="highlight"><u>Cleaning Data with Vertex AI</u></span>
+      </ul>`;
 
     io.emit('response', planResponse);
   })
@@ -170,15 +156,10 @@ io.on('connection', (socket) => {
 
 
   socket.on('send-evidence', async (file) => {
-    const evidenceResponse = `  
-    You made the following mistakes in your documentation:
-    
-    1) Lack of Negation Handling: Not accounting for negations (words like "not" or "never") can result in misclassified sentiments, as these words can reverse the sentiment orientation of a sentence
-    
+    const evidenceResponse = `You made the following mistakes in your documentation:
+    1) Lack of Negation Handling: Not accounting for negations (words like "not" or "never") can result in misclassified sentiments, as these words can reverse the sentiment orientation of a sentence 
     2) Lack of text normalization (stemming, lemmatization)
-    
-    3) There are 273 irrelevant characters, symbols, and special characters
-    `;
+    3) There are 273 irrelevant characters, symbols, and special characters`;
     io.emit('response', evidenceResponse);
 
   })

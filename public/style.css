@@ -17,6 +17,10 @@
   margin-bottom: 20px;
 }
 
+.highlight {
+  color: #4a49c9;
+}
+
 .message {
   padding: 10px;
   margin-bottom: 5px;
@@ -25,7 +29,6 @@
   text-align: left;
   font-size: 1rem;
   line-height: 1.5rem;
-  white-space: pre-line;
 }
 
 .message:first-of-type{

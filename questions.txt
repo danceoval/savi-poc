@@ -1,10 +1,13 @@
 Director of Development for NYC Education Enablement Consultancy Firm
 
-Works mostly with principals (clients) and teachers. Principals looking to improve student achievement, engagement via improving teacher practice/coaching
+Works mostly with principals and teachers. Principals looking to improve student achievement, engagement via improving teacher practice/coaching
 
 Use quarterly OKRs around teaching efficiency and NPS
 
-Pain points: 1) Staffing (NYC DOE is unpredictable, budgets fluctuate, hard to predict where work will occur). Hard to estimate volume/location of work to staff Coaches appropriately. Balancing Coach, staff time. 2) Trainings are expensive but useful, understanding when to target trainings, retreat days, community building, general work is very isolated by school. 3) Content development time and capacity
+Pain points: 
+1) Processing teacher feedback. It's hard to know how to give teachers and even schools feedback at scale
+2) Feedback we get is largely from teacher interviews, it's hard to quantify impact
+3) Identifying personalized ways to serve schools
 
 Personal assistant for managing Coaches’ calendars, project management, develop and track items on work plans
 
@@ -18,8 +21,7 @@ Very localized to NYC school system. Knows leaders, superintendents . Strong pre
 
 Some AI tools we’ve been wanting to explore around data viz (used tableau in the past)
 
-I'd love a personal assistant! School observations are overwhelming me. 
-
+How can AI process volumes of teacher notes for us?
 
 
 
