@@ -40,7 +40,7 @@ const hardcodedResponse = `<h3>Sentiment Analysis with Vertex AI</h3>
           <li>Train classification model</li>
         </ol>
         
-        <p>Learn about training a sentiment analysis model <u class='highlight'>here</u></p>.
+        <p>Learn about training a sentiment analysis model <u class='highlight'>here</u>.</p>
         
         <h4 class="highlight">Step 3 — Identifying Improvement Opportunities from Predictions</h4> 
         <ol>
@@ -144,11 +144,11 @@ io.on('connection', (socket) => {
     
     When you are ready, <i>upload a spreadsheet, pdf or doc evincing your completion of these goals!</i>
     
-    <h4>Recommended Content::</h4>
+    <h4>Recommended Content:</h4>
       <ul>
-        <li class="highlight"><u>Overview: Sentiment Analysis for Educational Data</u> (8 mins)</span>
-        <li class="highlight"><u>Jumpstart: Sentiment Analysis with Vertex AI</u> (7 mins)</span>
-        <li class="highlight"><u>Cleaning Text with Vertex AI</u> (5 mins)</span>
+        <li ><u class="highlight">Overview: Sentiment Analysis for Educational Data</u></span> (8 mins) </li>
+        <li ><u class="highlight">Jumpstart: Sentiment Analysis with Vertex AI</u> </span> (7 mins) </li>
+        <li ><u class="highlight">Cleaning Text with Vertex AI</u> </span> (5 mins)</li>
       </ul>`;
 
     io.emit('response', planResponse);
