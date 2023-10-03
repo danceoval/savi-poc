@@ -144,10 +144,11 @@ io.on('connection', (socket) => {
     
     When you are ready, <i>upload a spreadsheet, pdf or doc evincing your completion of these goals!</i>
     
-    <h4>Courses:</h4>
+    <h4>Recommended Content::</h4>
       <ul>
-        <li class="highlight"><u>Getting Started with Vertex AI</u></span>
-        <li class="highlight"><u>Cleaning Data with Vertex AI</u></span>
+        <li class="highlight"><u>Overview: Sentiment Analysis for Educational Data</u> (8 mins)</span>
+        <li class="highlight"><u>Jumpstart: Sentiment Analysis with Vertex AI</u> (7 mins)</span>
+        <li class="highlight"><u>Cleaning Text with Vertex AI</u> (5 mins)</span>
       </ul>`;
 
     io.emit('response', planResponse);
