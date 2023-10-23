@@ -8,9 +8,9 @@ export const ButtonListManager = (props) => {
  	<div>
  		{
 	        props.stage == 'Discovery' ? (<button onClick={() => props.handleButtonClick("Show")}>
-	           Show me the implementation plan and dependencies
+	           Show me the Upskilling Plan
 	          </button> ) : (<button onClick={() => props.handleButtonClick("Plan")}>
-	            Implement the recommendation
+	            Let's Get Started
 	          </button>
 	          ) 
       	}  

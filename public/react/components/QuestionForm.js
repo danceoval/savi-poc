@@ -5,17 +5,13 @@ export const QuestionForm = (props) => {
     "Describe your role.",
     "What are your current priorities?",
     "How do you measure success?",
-    "What are the top three pain points in your work?",
-    "If you could have a personal assistant, what would they help you with?",
-    "Who are your users/customers/clients? How do you currently provide a good experience for them?",
-    "If you had more time, how would you serve your users better?",
-    "What kind of data (unstructured (e.g. user feedback) and structured (e.g. Excel spreadsheets)) do you have access to? How do you currently use that data?",
-    "How is your organization different from similar organizations? Are there any aspects of a competitor you wish to emulate or outperform?",
-    "Is there any particular use case or AI tool that you have taken an interest in? ",
-    "Anything else you would like to add?"
+    "What are the top pain points in your work?",
+    "How many hours per week do you currently spend on this pain point?",
+    "What kind of data (unstructured (e.g. user feedback) and structured (e.g. Excel spreadsheets)) do you have access to?",
+    " How do you currently use that data?"
   ];
 
-  const questionsPerPage = 6;
+  const questionsPerPage = 7;
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * questionsPerPage;
