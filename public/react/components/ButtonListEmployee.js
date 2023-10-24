@@ -29,40 +29,22 @@ export const ButtonListEmployee = (props) => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      // Invoke the submitEvidence function with the selected file
-      props.submitEvidence(file);
+      // Identify if file is correct or not
+      let fileType = file.name.substr((file.name).length - 3)
+      if(fileType === 'pdf'){
+        props.submitEvidence(file);
+      } else {
+        alert("ERROR PLEASE SUBMIT A PDF")
+      }
+      
       // Clear the file input
       event.target.value = null;
     }
   };
 
-  const handleUpload = () => {
-    if (selectedFile) {
-      // Invoke the submitEvidence function with the selected file
-      props.submitEvidence(selectedFile);
-      // Clear the selected file
-      setSelectedFile(null);
-    }
-  };
-
   return (
     <div>
-      {toolArr.length ? (
-        toolArr.map((el, i) => (
-          <button key={i} onClick={() => props.handleButtonClick(el)}>
-            Ask Savi about {el}
-          </button>
-        ))
-      ) : null}
-{/*      <div className="input-container">
-        <input
-          type="text"
-          placeholder="Type a message..."
-          value={props.newMessage}
-          onChange={(e) => props.setNewMessage(e.target.value)}
-        />
-        <button onClick={props.handleMessageSend}>Ask Savi a Question</button>
-      </div>*/}
+
       {/* Add the "Submit Evidence" button and file input */}
        {
         props.stage == 'Show' ? (
@@ -75,7 +57,6 @@ export const ButtonListEmployee = (props) => {
             <button onClick={handleFileInputChange}>Submit Evidence</button>
             <input
               type="file"
-              accept=".pdf"
               ref={fileInputRef}
               style={{ display: 'none' }}
               onChange={handleFileChange}
