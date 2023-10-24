@@ -150,6 +150,26 @@
 }
 
 
+.step-inactive {
+  border-top: 2px solid #242456;
+  opacity: 0.5;
+  display: flex;
+  flex-direction: row;
+}
+
+.step-inactive .step-body {
+  flex: 0 0 80%;
+}
+
+.step-inactive .open-icon {
+  font-size: 1.5em;
+  margin-top: 1.5em;
+}
+
+.step-inactive .open-icon:hover {
+  color: #000;
+}
+
 .loader-dots {
   padding:0.5em 2.2em 0.5em 1em; 
   border-radius:.3em;
