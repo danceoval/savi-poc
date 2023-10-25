@@ -23,8 +23,13 @@ export const ButtonContainer = (props) => {
       let fileType = file.name.substr(file.name.length - 3);
       if (fileType === 'pdf') {
         props.submitEvidence(file);
+        handleCloseError()
       } else {
-        const txt = 'placeholder for bad upload';
+        const txt = `
+          <h4>Please correct the following mistakes in your submission:</h4>
+          <p>1. Data Curation: Submission does not match current user’s organization</p>
+          <p>2. Data Formatting: Please ensure submission is a .pdf file</p>
+        `;
         handleError(txt);
       }
 
@@ -76,9 +81,7 @@ export const ButtonContainer = (props) => {
   return (
     <div className="button-container">
       {error && (
-        <div className="error-message" onClick={handleCloseError}>
-          {error}
-        </div>
+        <div className="error-message" dangerouslySetInnerHTML={{ __html: error }}></div>
       )}
       {renderButtons()}
     </div>
