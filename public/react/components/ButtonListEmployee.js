@@ -1,23 +1,19 @@
 import React, {useState, useRef} from 'react';
+import {Toast} from './Toast'
 
-
-function extractRecommendedTools(inputArr) {
-  console.log("INPUT", inputArr)
-  const inputString = inputArr[inputArr.length - 1]
-  console.log("INPUT STR", inputString)
-  const startIndex = inputString.indexOf("Technologies:") + "Technologies:".length;
-  const recommendedText = inputString.substring(startIndex).trim();
-  const recommendedArray = recommendedText.split('-').map(item => item.trim());
-
-  return recommendedArray;
-}
 
 export const ButtonListEmployee = (props) => {
-  console.log("INN EMPLOYEEEE ", props.stage)
-  const plan = [...props.messages].slice(-1);
-  const toolArr = props.tools || ["Vertex AI", "Sentiment Analysis"];
-
   const [selectedFile, setSelectedFile] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleError = (message) => {
+    setError(message);
+  };
+
+  const handleCloseError = () => {
+    setError(null);
+  };
+
 
   const fileInputRef = useRef(null);
 
@@ -34,9 +30,9 @@ export const ButtonListEmployee = (props) => {
       if(fileType === 'pdf'){
         props.submitEvidence(file);
       } else {
-        alert("ERROR PLEASE SUBMIT A PDF")
+        handleError("ERROR PLEASE SUBMIT A PDF")
       }
-      
+
       // Clear the file input
       event.target.value = null;
     }
@@ -44,8 +40,7 @@ export const ButtonListEmployee = (props) => {
 
   return (
     <div>
-
-      {/* Add the "Submit Evidence" button and file input */}
+    {error && <Toast message={error} onClose={handleCloseError} />}
        {
         props.stage == 'Show' ? (
           <div className="evidence-container">
