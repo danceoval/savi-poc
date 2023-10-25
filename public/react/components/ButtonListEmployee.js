@@ -27,10 +27,16 @@ export const ButtonListEmployee = (props) => {
     if (file) {
       // Identify if file is correct or not
       let fileType = file.name.substr((file.name).length - 3)
+      console.log("FILLE Type", fileType)
       if(fileType === 'pdf'){
         props.submitEvidence(file);
       } else {
-        handleError("ERROR PLEASE SUBMIT A PDF")
+        //props.submitBadEvidence(file);
+        const txt = `Please correct the following mistakes in your submission:
+          </br> 1) Data Curation: Submission does not match current user’s organization 
+          </br> 2) Data Formatting: Please ensure submission is a .pdf file
+        `;
+        handleError(txt)
       }
 
       // Clear the file input

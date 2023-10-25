@@ -195,9 +195,10 @@
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
-  transition: display 1.5s;
+  transition: opacity 1s;
   opacity: 0;
   z-index: 999;
+  display: block;
 }
 
 .error-toast.visible {
@@ -206,7 +207,27 @@
 
 .error-toast.hidden {
   opacity: 0;
-  display: none;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #ccc;
+  height: 2em; /* Set the bar height to 2em */
+  border-radius: 1em; /* Adjust the border radius accordingly */
+  position: relative;
+  display: flex;
+  align-items: center; /* Center the content vertically */
+}
+
+.progress-bar-inner {
+  background-color: #4a49c9;
+  height: 100%;
+  border-radius: 1em; 
+  text-align: center;
+  color: #fff;
+  width: 0; 
+  transition: width 0.5s ease-in-out;
+  overflow: hidden; 
 }
 
 @keyframes loader-dots-animation {

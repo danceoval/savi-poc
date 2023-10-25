@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
 import loading from '../images/loading.gif'
+
 import {ButtonContainer} from './ButtonContainer'
-import {dummyPlan} from './dummyPlan';
+import {ProgressBar} from './ProgressBar';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
@@ -23,6 +24,7 @@ export const Chatbot = (props) => {
   const [loading, setLoading] = useState(true); // State to track loading
   const [stage, setStage] = useState('Discovery')
   const [tools, setTools] = useState([])
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     socket.emit('userConnected', props.info);
@@ -35,16 +37,17 @@ export const Chatbot = (props) => {
       }, 1800)
     });
 
-    socket.on('set-tools', (tools) => {
-      setTools(tools)
-    });
-    
   }, []);
 
   const submitEvidence = (file) => {
-    socket.emit('send-evidence', file)
-    setLoading(true); // Set loading to true when sending message
+    //setLoading(true); // Set loading to true when sending message
     setNewMessage('');
+    handleProgress(12);
+  }
+
+  const submitBadEvidence = (file) => {
+    console.log("HIII BAD EVIDENCE")
+    socket.emit('send-bad', file)
   }
 
   const handleButtonClick = (txt) => {
@@ -62,7 +65,6 @@ export const Chatbot = (props) => {
       const plan = [...messages].slice(-1)
       setMessages([introEmployee])
       socket.emit('employee-message', plan);
-      socket.emit('get-tools', plan)
       setLoading(true); // Set loading to true when sending message
       setNewMessage('');
     } else if(txt == 'Recommend') {
@@ -80,7 +82,6 @@ export const Chatbot = (props) => {
   };
 
   const startPlan = () => {
-    console.log("STARTING PLAN")
     setStage('Begin')
     socket.emit('start-plan', {})
     setLoading(true)
@@ -99,18 +100,30 @@ export const Chatbot = (props) => {
     return result;
   };
 
+
+  const handleProgress = (num) => {
+    if (percentage < 100) {
+      setPercentage(percentage + num);
+    }
+  };
   return (
-    <div className="chat-container">
-      <div className="message-container">
-        {messages.map((message, index) => (
-          <div key={index} className="message">
-            <div dangerouslySetInnerHTML={{__html: message}}></div>
-          </div>
-        ))}
+    <div>
+      <div className="chat-container">
+        <div className="message-container">
+          {messages.map((message, index) => (
+            <div key={index} className="message">
+              <div dangerouslySetInnerHTML={{__html: message}}></div>
+            </div>
+          ))}
+          {
+            (stage == 'Begin') && <ProgressBar percentage={percentage} />
+          }
+        </div>
+        {
+          loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages} submitEvidence={submitEvidence} submitBadEvidence={submitBadEvidence} startPlan={startPlan} handleProgress={handleProgress}/> )
+        }
       </div>
-      {
-        loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages} submitEvidence={submitEvidence} startPlan={startPlan}/> )
-      }
     </div>
+
   );
 };

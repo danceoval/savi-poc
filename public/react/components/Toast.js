@@ -8,7 +8,7 @@ export const Toast = ({ message, onClose }) => {
     const timer = setTimeout(() => {
       setVisible(false);
       onClose();
-    }, 2500);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);

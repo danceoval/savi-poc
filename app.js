@@ -75,11 +75,12 @@ io.on('connection', (socket) => {
 
 
 
-  socket.on('send-evidence', async (file) => {
-    const evidenceResponse = `You made the following mistakes in your documentation:
-    1) Lack of Negation Handling: Not accounting for negations (words like "not" or "never") can result in misclassified sentiments, as these words can reverse the sentiment orientation of a sentence 
-    2) Lack of text normalization (stemming, lemmatization)
-    3) There are 273 irrelevant characters, symbols, and special characters`;
+  socket.on('send-bad', async (file) => {
+    console.log("Bad evidence")
+    const evidenceResponse = `Please correct the following mistakes in your submission:
+    1) Data Curation: Submission does not match current user’s organization 
+    2) Data Formatting: Please ensure submission is a .pdf file
+    `;
     io.emit('response', evidenceResponse);
 
   })
