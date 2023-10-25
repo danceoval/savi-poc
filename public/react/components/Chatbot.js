@@ -1,92 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
-
-import loading from '../images/loading.gif'
-
-import {ButtonContainer} from './ButtonContainer'
+import {ButtonContainer} from './ButtonContainer';
 import {ProgressBar} from './ProgressBar';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
 export const Chatbot = (props) => {
-  const introManager = ` 
-  Hello, I am Savi! 
-  As your trusted assistant, your team will unlock a new realm of unparalleled efficiency, effectiveness, and performance.
-  `;
+  const introManager = `Hello, I am Savi! As your trusted assistant, your team will unlock a new realm of unparalleled efficiency, effectiveness, and performance.`;
 
-  const introEmployee =  ` 
-  Hello, I am Savi! 
-  As your trusted coach, I will guide you to using AI in your role!
-  `;
+  const introEmployee = `Hello, I am Savi! As your trusted coach, I will guide you to using AI in your role!`;
 
   const [messages, setMessages] = useState([introManager]);
   const [newMessage, setNewMessage] = useState('');
-  const [loading, setLoading] = useState(true); // State to track loading
-  const [stage, setStage] = useState('Discovery')
-  const [tools, setTools] = useState([])
+  const [loadingState, setLoadingState] = useState(true); // Use a different name to avoid naming conflicts
   const [percentage, setPercentage] = useState(0);
 
-  useEffect(() => {
-    socket.emit('userConnected', props.info);
-
-    socket.on('response', (message) => {
-      setTimeout(() => { // Remove when not
-        console.log("THINKING")
-        setMessages((prevMessages) => [...prevMessages, message]);
-        setLoading(false); // Turn off loading when response received
-      }, 1800)
-    });
-
-  }, []);
-
-  const submitEvidence = (file) => {
-    //setLoading(true); // Set loading to true when sending message
-    setNewMessage('');
-    handleProgress(12);
-  }
-
-  const submitBadEvidence = (file) => {
-    console.log("HIII BAD EVIDENCE")
-    socket.emit('send-bad', file)
-  }
-
-  const handleButtonClick = (txt) => {
+  const handleButtonClick = () => {
     let message;
-    if(txt == 'Show'){
-      message = "Show me the implementation plan and dependencies"
-      setStage('Show')
-      socket.emit('show-plan', message);
-      setMessages([introEmployee])
-      setLoading(true); // Set loading to true when sending message
-      setNewMessage('');
-    } else if(txt == 'Plan') {
-      message = "Implement this plan"
-      setStage('Implement')
-      const plan = [...messages].slice(-1)
-      setMessages([introEmployee])
-      socket.emit('employee-message', plan);
-      setLoading(true); // Set loading to true when sending message
-      setNewMessage('');
-    } else if(txt == 'Recommend') {
-      message = "Recommend another suitable use case"
-      setStage('Discovery')
-      socket.emit('message', message);
-      setLoading(true); // Set loading to true when sending message
-      setNewMessage('');
-    } else { //Employee Q
-      socket.emit('message', "Give me a learning plan for " + txt);
-      setLoading(true); // Set loading to true when sending message
-      setNewMessage('');
+
+    if (props.stateIdx == 1) { // Set UseCase
+      props.setStateIdx(2)
+      socket.emit('show-plan', {})
+    } else if (props.stateIdx == 2) { // Show Project
+      props.setStateIdx(3)
+      socket.emit('start-plan', {})
+    } else { //Upskilling Plan
+      props.setStateIdx(4)
     }
-    
+
+    setMessages([introEmployee]);
+    setLoadingState(true); // Set loading to true when sending message
+    setNewMessage('');
   };
 
-  const startPlan = () => {
-    setStage('Begin')
-    socket.emit('start-plan', {})
-    setLoading(true)
-    setNewMessage('')
-  }
 
 
   const addNewLineAfterSentences = (inputString) => {
@@ -100,30 +46,67 @@ export const Chatbot = (props) => {
     return result;
   };
 
+  const submitEvidence = (file) => {
+    //setLoading(true); // Set loading to true when sending message
+    setNewMessage('');
+    handleProgress(12);
+  }
+
+  const submitBadEvidence = (file) => {
+    alert("HIII BAD EVIDENCE")
+  }
 
   const handleProgress = (num) => {
     if (percentage < 100) {
       setPercentage(percentage + num);
     }
   };
+
+
+
+  useEffect(() => {
+    socket.emit('userConnected', '');
+
+    socket.on('response', (message) => {
+      setTimeout(() => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+        setLoadingState(false); // Turn off loading when response received
+      }, 1800);
+    });
+
+    return () => {
+      // Cleanup logic, if needed
+      socket.disconnect();
+    };
+  }, []);
+
   return (
     <div>
       <div className="chat-container">
         <div className="message-container">
           {messages.map((message, index) => (
             <div key={index} className="message">
-              <div dangerouslySetInnerHTML={{__html: message}}></div>
+              <div dangerouslySetInnerHTML={{ __html: message }}></div>
             </div>
           ))}
-          {
-            (stage == 'Begin') && <ProgressBar percentage={percentage} />
-          }
         </div>
-        {
-          loading  ? <div className='loader-dots'>One moment please</div>  : ( <ButtonContainer stage={stage} tools={tools} handleButtonClick={handleButtonClick} messages={messages} submitEvidence={submitEvidence} submitBadEvidence={submitBadEvidence} startPlan={startPlan} handleProgress={handleProgress}/> )
-        }
+        {loadingState ? (
+          <div className="loader-dots">One moment please</div>
+        ) : (
+          <div>
+            {props.stateIdx == 3 && <ProgressBar percentage={percentage} />}
+          <ButtonContainer
+            stateIdx={props.stateIdx}
+            handleButtonClick={handleButtonClick}
+            messages={messages}
+            submitEvidence={submitEvidence}
+            submitBadEvidence={submitBadEvidence}
+            handleProgress={handleProgress}
+          />
+          </div>
+        )}
       </div>
     </div>
-
   );
 };
+

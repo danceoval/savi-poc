@@ -11,7 +11,7 @@ export const QuestionForm = (props) => {
     " How do you currently use that data?"
   ];
 
-  const questionsPerPage = 7;
+  const questionsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * questionsPerPage;
@@ -40,8 +40,7 @@ export const QuestionForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (userAnswers.every((answer) => answer.answer !== '')) {
-      props.setInfo(userAnswers);
-      props.setView('chatbot');
+      props.setStateIdx(1);
     } else {
       alert("Please answer all questions before submitting.");
     }

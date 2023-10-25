@@ -3,32 +3,10 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 const app = express();
-const bodyParser = require('body-parser')
-const {db, User} = require('./db')
 
-
-const {openai} = require("./config/open-ai.js")
-const {createManagerPrompt, createEmployeePrompt, createToolPrompt} = require("./config/prompts.js")
 const {usecase, upskillingPlan, planStart} = require('./responses')
 
 const PORT = process.env.PORT || 3000;
-
-
-
-/* Chat GPT Setup */
-async function getCompletion(messages){
-  let model = "gpt-3.5-turbo";
-  try {
-        const completion = await openai.createChatCompletion({
-            model,
-            messages
-        })
-        return completion.data.choices[0].message.content
-    } catch (e) {
-        console.log(e)
-    }
-}
-
 
 
 /* Socket Setup */
@@ -49,22 +27,12 @@ io.on('connection', (socket) => {
 
   //First step: Share Usecase
   socket.on('userConnected', async (info) => {
-    prompt = createManagerPrompt(info);
-    history = [['system', prompt]]
-    const messages = history.map(([role, content]) => ({role, content}));
-    //const completedResponse = await getCompletion(messages)
     io.emit('response', usecase); // Broadcast the message to front-end
   })
 
   // Second step: Show Upskilling Plan
   socket.on('show-plan', async (message) => {
-    try{
-      const messages = history.map(([role, content]) => ({role, content}));
-      messages.push({role : 'user', content: message});
-      io.emit('response', upskillingPlan);
-    }catch (err) {
-      console.log('Oh no! ', err)
-    }
+    io.emit('response', upskillingPlan);
   })
 
 
