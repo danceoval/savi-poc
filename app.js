@@ -23,7 +23,7 @@ const io = socketIo(server, {
 
 io.on('connection', (socket) => {
   console.log('A user connected');
-  let history; 
+  let messages = [] 
 
   //First step: Share Usecase
   socket.on('userConnected', async (info) => {
@@ -43,49 +43,10 @@ io.on('connection', (socket) => {
 
 
 
-  socket.on('send-bad', async (file) => {
-    console.log("Bad evidence")
-    const evidenceResponse = `Please correct the following mistakes in your submission:
-    1) Data Curation: Submission does not match current user’s organization 
-    2) Data Formatting: Please ensure submission is a .pdf file
-    `;
-    io.emit('response', evidenceResponse);
-
-  })
+ 
 
 
-  socket.on('employee-message', async (info) => {
-    console.log("USE CASE FROM EMPLPOYEE ", info)
-    prompt = createEmployeePrompt(info);
-    history = [['system', prompt]]
-    const messages = history.map(([role, content]) => ({role, content}));
-    const completedResponse = await getCompletion(messages)
-    io.emit('response', completedResponse); // Broadcast the message to front-end
-  })
 
-  
-
-  socket.on('message', async (message) => {
-    try {
-        const messages = history.map(([role, content]) => ({role, content}));
-        messages.push({role : 'user', content: message});
-        const completedResponse = await getCompletion(messages)
-        io.emit('response', completedResponse); // Broadcast the message to front-end
-      } catch (e){
-        console.error(e)
-      }
-    
-  });
-
-  socket.on('get-tools', async (plan) => {
-    try {
-      const prompt = createToolPrompt(plan);
-      const completedResponse = await getCompletion(messages)
-      io.emit('set-tools', completedResponse); // Broadcast the message to front-end
-    } catch(e){
-      console.error(e)
-    }
-  })
 
   socket.on('disconnect', () => {
     console.log('A user disconnected');

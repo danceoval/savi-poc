@@ -1,17 +1,8 @@
 import React, { useState, useRef } from 'react';
 
 export const ButtonContainer = (props) => {
-  const [error, setError] = useState(null);
 
   const fileInputRef = useRef(null);
-
-  const handleError = (message) => {
-    setError(message);
-  };
-
-  const handleCloseError = () => {
-    setError(null);
-  };
 
   const handleFileInputChange = () => {
     fileInputRef.current.click();
@@ -19,18 +10,27 @@ export const ButtonContainer = (props) => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    props.setLoadingState(true);
     if (file) {
       let fileType = file.name.substr(file.name.length - 3);
       if (fileType === 'pdf') {
-        props.submitEvidence(file);
-        handleCloseError()
+        setTimeout(() => {
+          props.setLoadingState(false);
+          props.setError(null); 
+          props.submitEvidence(file)
+        }, 700);
       } else {
-        const txt = `
+        console.log("IN ERROR")
+        setTimeout(() => {
+          const txt = `
           <h4>Please correct the following mistakes in your submission:</h4>
           <p>1. Data Curation: Submission does not match current user’s organization</p>
           <p>2. Data Formatting: Please ensure submission is a .pdf file</p>
-        `;
-        handleError(txt);
+          `;
+          props.setLoadingState(false); 
+          props.setError(txt); 
+        }, 1500);
+
       }
 
       event.target.value = null;
@@ -80,8 +80,8 @@ export const ButtonContainer = (props) => {
 
   return (
     <div className="button-container">
-      {error && (
-        <div className="error-message" dangerouslySetInnerHTML={{ __html: error }}></div>
+      {props.error && (
+        <div className="error-message" dangerouslySetInnerHTML={{ __html: props.error }}></div>
       )}
       {renderButtons()}
     </div>

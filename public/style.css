@@ -226,7 +226,7 @@
   text-align: center;
   color: #fff;
   width: 0; 
-  transition: width 0.5s ease-in-out;
+  transition: width 1.5s ease-in-out;
   overflow: hidden; 
 }
 

@@ -15,7 +15,6 @@ export const App = () => {
 
   return (
     <div className="App">
-      State Idx:  {stateIdx} Current Stage:  {states[stateIdx]}
       <img src={logo} id="logo" />
       {
         stateIdx === 0 ? < QuestionForm setInfo={setInfo} setStateIdx={setStateIdx}/> : < Chatbot  setStateIdx={setStateIdx} stateIdx={stateIdx} />

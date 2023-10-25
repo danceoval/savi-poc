@@ -14,6 +14,7 @@ export const Chatbot = (props) => {
   const [newMessage, setNewMessage] = useState('');
   const [loadingState, setLoadingState] = useState(true); // Use a different name to avoid naming conflicts
   const [percentage, setPercentage] = useState(0);
+  const [error, setError] = useState(null);
 
   const handleButtonClick = () => {
     let message;
@@ -47,13 +48,8 @@ export const Chatbot = (props) => {
   };
 
   const submitEvidence = (file) => {
-    //setLoading(true); // Set loading to true when sending message
     setNewMessage('');
     handleProgress(12);
-  }
-
-  const submitBadEvidence = (file) => {
-    alert("HIII BAD EVIDENCE")
   }
 
   const handleProgress = (num) => {
@@ -100,8 +96,10 @@ export const Chatbot = (props) => {
             handleButtonClick={handleButtonClick}
             messages={messages}
             submitEvidence={submitEvidence}
-            submitBadEvidence={submitBadEvidence}
             handleProgress={handleProgress}
+            setLoadingState={setLoadingState}
+            error={error}
+            setError={setError}
           />
           </div>
         )}
