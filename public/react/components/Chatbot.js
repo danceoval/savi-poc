@@ -52,6 +52,10 @@ export const Chatbot = (props) => {
     setNewMessage('');
     handleProgress(12);
     setSubmitMsg('Begin Next Step');
+    props.setSuccess(true)
+    setTimeout(() =>{
+      props.setSuccess(false)
+    },2500)
   }
 
   const handleProgress = (num) => {

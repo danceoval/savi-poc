@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "seed" : "node seed.js",
+    "seed": "node seed.js",
     "build": "parcel public/index.html --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +28,7 @@
     "pg-hstore": "^2.3.4",
     "prompt-sync": "^4.2.0",
     "react": "^17.0.2",
+    "react-confetti": "^6.1.0",
     "react-dom": "^17.0.2",
     "readline-sync": "^1.4.10",
     "sequelize": "^6.32.1",
