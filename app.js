@@ -27,18 +27,24 @@ io.on('connection', (socket) => {
 
   //First step: Share Usecase
   socket.on('userConnected', async (info) => {
-    io.emit('response', usecase); // Broadcast the message to front-end
+    setTimeout(() => {
+      io.emit('response', usecase); // Broadcast the message to front-end
+    }, 2700);
   })
 
   // Second step: Show Upskilling Plan
   socket.on('show-plan', async (message) => {
-    io.emit('response', upskillingPlan);
+    setTimeout(() => {
+      io.emit('response', upskillingPlan);
+    }, 3400);
   })
 
 
 
   socket.on('start-plan', async () => {
-    io.emit('response', planStart);
+    setTimeout(() => {
+      io.emit('response', planStart);
+    }, 1800);
   })
 
 

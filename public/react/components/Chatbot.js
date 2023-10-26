@@ -64,10 +64,8 @@ export const Chatbot = (props) => {
     socket.emit('userConnected', '');
 
     socket.on('response', (message) => {
-      setTimeout(() => {
-        setMessages((prevMessages) => [...prevMessages, message]);
-        setLoadingState(false); // Turn off loading when response received
-      }, 1800);
+      setMessages((prevMessages) => [...prevMessages, message]);
+      setLoadingState(false); // Turn off loading when response received
     });
 
     return () => {
