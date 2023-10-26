@@ -18,6 +18,8 @@ which means you will save 26 hours per month if you implement this use case!
 const upskillingPlan = `<h3>Project: HuggingFace to streamline ESG research process</h3>`;
 
 const planStart = `
+<div<
+<h3>Project: HuggingFace to streamline ESG research process</h3>
 <div class="step-active">
   <h3 class="highlight">Step 1 — Getting Started with HuggingFace</h3>
   <h4 class="highlight">Estimated Time: 21 mins</h4>
@@ -79,6 +81,7 @@ const planStart = `
   <div class="open-icon">
     <i class="fa-solid fa-arrow-up-right-from-square"></i>
   </div>
+</div>
 </div>
 `;
 

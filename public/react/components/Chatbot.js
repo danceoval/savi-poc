@@ -25,13 +25,10 @@ export const Chatbot = (props) => {
 
     if (props.stateIdx == 1) { // Set UseCase
       props.setStateIdx(2)
-      socket.emit('show-plan', {})
-    } else if (props.stateIdx == 2) { // Show Project
-      props.setStateIdx(3)
       socket.emit('start-plan', {})
-    } else { //Upskilling Plan
-      props.setStateIdx(4)
-    }
+    } else { // Show Project
+      props.setStateIdx(3)
+    } 
 
     setMessages([introEmployee]);
     setLoadingState(true); // Set loading to true when sending message
@@ -95,7 +92,7 @@ export const Chatbot = (props) => {
         ) : (
           <div>
           {success && <h1>Well done!</h1>}
-          {props.stateIdx == 3 && <ProgressBar percentage={percentage} />}
+          {props.stateIdx == 2 && <ProgressBar percentage={percentage} />}
           <ButtonContainer
             stateIdx={props.stateIdx}
             handleButtonClick={handleButtonClick}

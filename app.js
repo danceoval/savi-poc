@@ -33,18 +33,11 @@ io.on('connection', (socket) => {
   })
 
   // Second step: Show Upskilling Plan
-  socket.on('show-plan', async (message) => {
-    setTimeout(() => {
-      io.emit('response', upskillingPlan);
-    }, 3400);
-  })
-
-
 
   socket.on('start-plan', async () => {
     setTimeout(() => {
       io.emit('response', planStart);
-    }, 1800);
+    }, 8800);
   })
 
 

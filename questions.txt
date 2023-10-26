@@ -1,23 +1,19 @@
-"Describe your role."
 VP of Strategy & Transformation at an international bank, based in E. Asia.
 
 
-"What are your current priorities?”
 We’d like to be recognized as a leader in the ESG and are in the process of evaluating our ESG portfolio.
 
-"How do you measure success?"
+
 We want our ESG portfolio to have an average score that is greater than 80, while producing annualized returns at or greater than 7%. 
 
-"What are your top pain points at work?"
-“Spending a lot of time manually researching potential investments”
+Spending a lot of time manually researching potential investments
 
-"How many hours per week do you currently spend for this pain point?"
 15 hours per week
 
-"What kind of data (unstructured (e.g. user feedback) and structured (e.g. Excel spreadsheets)) do you have access to?
-The vast majority of our data lives in Excel spreadsheets and Salesforce ”
 
- How do you currently use that data?"
+The vast majority of our data lives in Excel spreadsheets and Salesforce 
+
+
  Salesforce is for tracking client data, while Excel holds proprietary financial models.
 
 
