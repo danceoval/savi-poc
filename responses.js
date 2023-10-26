@@ -47,8 +47,7 @@ const planStart = `
 </div>
 <div class="step-inactive">
   <div class="step-body">
-    <h3 >Step 2 — Identifying Data Resources</h3>
-    <h4 >Estimated Time: 18 mins</h4>
+    <span class="step-title">Step 2 — Identifying Data Resources</span><span class="step-time">Estimated Time: 18 mins</span>
   </div>
   <div class="open-icon">
     <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -56,8 +55,8 @@ const planStart = `
 </div>
 <div class="step-inactive">
   <div class="step-body">
-    <h3 >Step 3 — Creating a Python Script for Data Mining</h3>
-    <h4 >Estimated Time: 24 mins</h4>
+    <span class="step-title">Step 3 — Creating a Python Script for Data Mining
+    </span><span class="step-time">Estimated Time: 24 mins</span>
   </div>
   <div class="open-icon">
     <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -65,8 +64,8 @@ const planStart = `
 </div>
 <div class="step-inactive">
   <div class="step-body">
-    <h3 >Step 4 — Running your Data Mining Script </h3>
-    <h4 >Estimated Time: 9 mins</h4>
+    <span class="step-title">Step 4 — Running your Data Mining Script 
+    </span><span class="step-time">Estimated Time: 9 mins</span>
   </div>
   <div class="open-icon">
     <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -74,8 +73,8 @@ const planStart = `
 </div>
 <div class="step-inactive">
   <div class="step-body">
-    <h3 >Step 5 — Identifying Opportunities for Improvement </h3>
-    <h4>Estimated Time: 11 mins</h4>
+    <span class="step-title">Step 5 — Identifying Opportunities for Improvement
+    </span><span class="step-time">Estimated Time: 11 mins</span>
   </div>
   <div class="open-icon">
     <i class="fa-solid fa-arrow-up-right-from-square"></i>

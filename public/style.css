@@ -159,11 +159,19 @@
 
 .step-inactive .step-body {
   flex: 0 0 80%;
+  padding: 0.5em;
+}
+
+.step-inactive .step-title {
+  font-size: 1em;
+  color: #242456 !important;
+  font-weight: bold;
+  padding-right: 1em;
 }
 
 .step-inactive .open-icon {
-  font-size: 1.5em;
-  margin-top: 1.5em;
+  font-size: 1em;
+  margin: .5em;
 }
 
 .step-inactive .open-icon:hover {
@@ -212,7 +220,7 @@
 .error-message h4{
   color: crimson;
   font-size: 1.5em;
-  font-weight: bold;
+  text-weight: bold;
 }
 
 .error-message p {
