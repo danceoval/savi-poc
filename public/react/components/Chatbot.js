@@ -16,6 +16,7 @@ export const Chatbot = (props) => {
   const [percentage, setPercentage] = useState(0);
   const [error, setError] = useState(null);
   const [submitMsg, setSubmitMsg] = useState('Submit Scraped Data')
+  const [fileName, setFileName] = useState('')
 
   const handleButtonClick = () => {
     let message;
@@ -105,6 +106,8 @@ export const Chatbot = (props) => {
             error={error}
             setError={setError}
             submitMsg={submitMsg}
+            setFileName={setFileName}
+            fileName={fileName}
           />
           </div>
         )}

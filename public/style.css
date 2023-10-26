@@ -210,9 +210,9 @@
 }
 
 .error-message h4{
-  color: cobalt;
+  color: crimson;
   font-size: 1.5em;
-  text-weight: bold;
+  font-weight: bold;
 }
 
 .error-message p {

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 
 export const ButtonContainer = (props) => {
-  const [fileName, setFileName] = useState('');
   const fileInputRef = useRef(null);
   const [submitted, setSubmitted] = useState(false)
 
@@ -13,6 +12,7 @@ export const ButtonContainer = (props) => {
     const file = event.target.files[0];
     props.setLoadingState(true);
     if (file) {
+      props.setFileName(`Selected file: ${file.name}`);
       let fileType = file.name.substr(file.name.length - 3);
       if (fileType === 'pdf') {
         setTimeout(() => {
@@ -61,10 +61,9 @@ export const ButtonContainer = (props) => {
           </div>
         );
       case 3:
-        console.log("FF", fileName)
         return (
           <div className="evidence-container">
-            {fileName}
+            {props.fileName && (<h4 className="highlight">{props.fileName}</h4>)}
             <button onClick={handleFileInputChange}>{props.submitMsg}</button>
             <input
               type="file"
