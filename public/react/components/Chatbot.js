@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import {ButtonContainer} from './ButtonContainer';
 import {ProgressBar} from './ProgressBar';
+import Confetti from 'react-confetti';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
@@ -17,6 +18,7 @@ export const Chatbot = (props) => {
   const [error, setError] = useState(null);
   const [submitMsg, setSubmitMsg] = useState('Submit Scraped Data')
   const [fileName, setFileName] = useState('')
+  const [success, setSuccess] = useState(false);
 
   const handleButtonClick = () => {
     let message;
@@ -53,10 +55,7 @@ export const Chatbot = (props) => {
     setNewMessage('');
     handleProgress(12);
     setSubmitMsg('Begin Next Step');
-    props.setSuccess(true)
-    setTimeout(() =>{
-      props.setSuccess(false)
-    },2500)
+    setSuccess(true)
   }
 
   const handleProgress = (num) => {
@@ -95,7 +94,8 @@ export const Chatbot = (props) => {
           <div className="loader-dots">One moment please</div>
         ) : (
           <div>
-            {props.stateIdx == 3 && <ProgressBar percentage={percentage} />}
+          {success && <h1>Well done!</h1>}
+          {props.stateIdx == 3 && <ProgressBar percentage={percentage} />}
           <ButtonContainer
             stateIdx={props.stateIdx}
             handleButtonClick={handleButtonClick}
@@ -108,6 +108,7 @@ export const Chatbot = (props) => {
             submitMsg={submitMsg}
             setFileName={setFileName}
             fileName={fileName}
+            success={success}
           />
           </div>
         )}
