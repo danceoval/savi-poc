@@ -11,7 +11,7 @@ export const QuestionForm = (props) => {
     " How do you currently use that data?"
   ];
 
-  const questionsPerPage = 4;
+  const questionsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * questionsPerPage;
