@@ -15,6 +15,7 @@ export const Chatbot = (props) => {
   const [loadingState, setLoadingState] = useState(true); // Use a different name to avoid naming conflicts
   const [percentage, setPercentage] = useState(0);
   const [error, setError] = useState(null);
+  const [submitMsg, setSubmitMsg] = useState('Submit Scraped Data')
 
   const handleButtonClick = () => {
     let message;
@@ -50,6 +51,7 @@ export const Chatbot = (props) => {
   const submitEvidence = (file) => {
     setNewMessage('');
     handleProgress(12);
+    setSubmitMsg('Begin Next Step');
   }
 
   const handleProgress = (num) => {
@@ -98,6 +100,7 @@ export const Chatbot = (props) => {
             setLoadingState={setLoadingState}
             error={error}
             setError={setError}
+            submitMsg={submitMsg}
           />
           </div>
         )}

@@ -209,6 +209,16 @@
   opacity: 0;
 }
 
+.error-message h4{
+  color: cobalt;
+  font-size: 1.5em;
+  text-weight: bold;
+}
+
+.error-message p {
+  font-size: 1em;
+}
+
 .progress-bar {
   width: 100%;
   background-color: #ccc;

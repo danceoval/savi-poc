@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 
 export const ButtonContainer = (props) => {
-
+  const [fileName, setFileName] = useState('');
   const fileInputRef = useRef(null);
+  const [submitted, setSubmitted] = useState(false)
 
   const handleFileInputChange = () => {
     fileInputRef.current.click();
@@ -17,10 +18,9 @@ export const ButtonContainer = (props) => {
         setTimeout(() => {
           props.setLoadingState(false);
           props.setError(null); 
-          props.submitEvidence(file)
-        }, 700);
+          props.submitEvidence(file);
+        }, 1700);
       } else {
-        console.log("IN ERROR")
         setTimeout(() => {
           const txt = `
           <h4>Please correct the following mistakes in your submission:</h4>
@@ -28,9 +28,8 @@ export const ButtonContainer = (props) => {
           <p>2. Data Formatting: Please ensure submission is a .pdf file</p>
           `;
           props.setLoadingState(false); 
-          props.setError(txt); 
+          props.setError(txt);
         }, 1500);
-
       }
 
       event.target.value = null;
@@ -62,15 +61,27 @@ export const ButtonContainer = (props) => {
           </div>
         );
       case 3:
+        console.log("FF", fileName)
         return (
           <div className="evidence-container">
-            <button onClick={handleFileInputChange}>Submit Evidence</button>
+            {fileName}
+            <button onClick={handleFileInputChange}>{props.submitMsg}</button>
             <input
               type="file"
               ref={fileInputRef}
               style={{ display: 'none' }}
               onChange={handleFileChange}
             />
+          </div>
+        );
+      case 4:
+        return (
+          <div>
+            <div className="evidence-container">
+              <button onClick={props.handleButtonClick}>
+                Begin Next Stage
+              </button>
+            </div>
           </div>
         );
       default:

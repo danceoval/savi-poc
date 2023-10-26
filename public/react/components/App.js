@@ -6,7 +6,7 @@ import logo from '../images/logo.svg'
 
 
 export const App = () => {
-  const states = ['survey', 'use-case', 'project', 'plan'];
+  const states = ['survey', 'use-case', 'project', 'plan', 'next'];
 
   const [view, setView] = useState('survey');
   const [info, setInfo] = useState([])
