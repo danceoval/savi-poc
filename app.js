@@ -4,7 +4,7 @@ const socketIo = require('socket.io');
 
 const app = express();
 
-const {usecase, upskillingPlan, planStart} = require('./responses')
+const {usecaseArr, planObj} = require('./responses')
 
 const PORT = process.env.PORT || 3000;
 
@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
   //First step: Share Usecase
   socket.on('userConnected', async (info) => {
     setTimeout(() => {
-      io.emit('response', usecase); // Broadcast the message to front-end
+      io.emit('response-usecase', usecaseArr); // Broadcast the message to front-end
     }, 2700);
   })
 
@@ -36,14 +36,9 @@ io.on('connection', (socket) => {
 
   socket.on('start-plan', async () => {
     setTimeout(() => {
-      io.emit('response', planStart);
+      io.emit('response-plan', planObj);
     }, 8800);
   })
-
-
-
- 
-
 
 
 

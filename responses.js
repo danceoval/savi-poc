@@ -14,11 +14,79 @@ which means you will save 26 hours per month if you implement this use case!
 </p>
 `;
 
+const usecaseArr = [
+`
+Thank you for answering the questions.
+`,
+`
+Based on your answers, we’d like to recommend using HuggingFace to streamline your ESG research process. 
+Using HuggingFace, you can easily generate data mining scripts to extract and synthesize a large amount of information from various sources such as 
+MSCI ESG Ratings, The Carbon Disclosure Project, Refinitiv, The World Bank’s Sovereign ESG Portal. 
+`,
+`
+This use case takes only 3 hours to learn & implement and makes research 41% more efficient according to users similar to you, 
+which means you will save 26 hours per month if you implement this use case!
+`
+]
 
-const upskillingPlan = `<h3>Project: HuggingFace to streamline ESG research process</h3>`;
+const planObj = {
+  header: "Project: HuggingFace to streamline ESG research process",
+  steps: [
+    {
+      title: "Step 1 — Getting Started with HuggingFace",
+      length: "Estimated Time: 21 mins",
+      goals: [
+        "Go to HuggingChat.co to find the chat interface where you will use prompting to generate Python code.",
+        "In a separate tab, go to https://colab.research.google.com/ and select NEW NOTEBOOK. This will be where we run the Python code we’ve created.",
+        "Create the following prompt, and run it in HuggingChat:\n“Create a Python script for downloading the Wikipedia page for the organization {ORGANIZATION NAME HERE} as a PDF.”",
+        "Copy the Python code from HuggingChat and paste it into the Google Colab Notebook",
+        "Run your code by pressing the 'play' button in the left-hand corner of your notebook. If it succeeds, you will see a downloaded PDF of your organization’s Wikipedia page."
+      ],
+      submission: "When you are ready, upload a PDF evincing your completion of these goals! In the next step, we will see how we can extend this flow to synthesize ESG data from across the web.",
+      resources : [
+        {
+          title: 'Youtube: Prompt-based Engineering for non-coders',
+          length: '27 mins,  Recommended: 1:30 - 5:39'
+        },
+        {
+          title: 'Interactive Practice - Prompt-based Coding by FreeCodeCamp',
+          len: 'Total Length: 7 mins'
+        }
+      ],
+    },
+    {
+      title: "Step 2 — Identifying Data Resources",
+      length: "Estimated Time: 18 mins",
+      goals : null,
+      submission: null,
+      resources : null
+    },
+    {
+      title: "Step 3 — Creating a Python Script for Data Mining",
+      length: "Estimated Time: 24 mins",
+      goals : null,
+      submission: null,
+      resources : null
+    },
+    {
+      title: "Step 4 — Creating a Python Script for Data Mining",
+      length: "Estimated Time: 9 mins",
+      goals : null,
+      submission: null,
+      resources : null
+    },
+    {
+      title: "Step 5 — Identifying Opportunities for Improvement",
+      length: "Estimated Time: 11 mins",
+      goals : null,
+      submission: null,
+      resources : null
+    },
+  ]
+}
 
 const planStart = `
-<div<
+<div>
 <h3>Project: HuggingFace to streamline ESG research process</h3>
 <div class="step-active">
   <h3 class="highlight">Step 1 — Getting Started with HuggingFace</h3>
@@ -85,4 +153,4 @@ const planStart = `
 </div>
 `;
 
-module.exports = {usecase, upskillingPlan, planStart}
+module.exports = { usecaseArr, planObj}

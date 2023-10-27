@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 export const ButtonContainer = (props) => {
   const fileInputRef = useRef(null);
   const [submitted, setSubmitted] = useState(false)
-  console.log("PROPS", props)
+
   const handleFileInputChange = () => {
     fileInputRef.current.click();
   };
