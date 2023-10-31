@@ -4,7 +4,7 @@ const socketIo = require('socket.io');
 
 const app = express();
 
-const {usecaseArr, planObj, dataSourcesObj} = require('./responses')
+const {usecaseObj, planObj, dataSourcesObj} = require('./responses')
 
 const PORT = process.env.PORT || 3000;
 
@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
   //First step: Select Data Streams
   socket.on('userConnected', async (info) => {
     setTimeout(() => {
-      io.emit('response-usecase', usecaseArr); // Broadcast the message to front-end
+      io.emit('response-usecase', usecaseObj); // Broadcast the message to front-end
     }, 2700);
   })
 

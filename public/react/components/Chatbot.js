@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import {ButtonContainer} from './ButtonContainer';
 import {ProgressBar} from './ProgressBar';
-
+import {UseCase} from './UseCase'
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
@@ -13,6 +13,7 @@ export const Chatbot = (props) => {
 
   const [messages, setMessages] = useState([introManager]);
   const [newMessage, setNewMessage] = useState(''); //This is for the Usecase Identification
+  const [useCase, setUseCase] = useState({})
   const [plan, setPlan] = useState({}) //This is for the upskilling Plan
   const [loadingState, setLoadingState] = useState(true); // Use a different name to avoid naming conflicts
   const [percentage, setPercentage] = useState(0);
@@ -30,10 +31,7 @@ export const Chatbot = (props) => {
     } else { // Show Project
       props.setStateIdx(3)
     } 
-
-    setMessages([introEmployee]);
     setLoadingState(true); // Set loading to true when sending message
-    setNewMessage('');
   };
 
 
@@ -67,8 +65,8 @@ export const Chatbot = (props) => {
   useEffect(() => {
     socket.emit('userConnected', '');
 
-    socket.on('response-usecase', (messageArr) => {
-      setMessages((prevMessages) => [...prevMessages, ...messageArr]);
+    socket.on('response-usecase', (messageObj) => {
+      setUseCase(messageObj)
       setLoadingState(false); // Turn off loading when response received
     })
 
@@ -85,102 +83,41 @@ export const Chatbot = (props) => {
     };
   }, []);
 
+  const renderState = stateIdx => {
+    switch(stateIdx){
+      case 2:
+        return (!loadingState && <UseCase 
+            useCase={useCase}
+            stateIdx={stateIdx}
+            handleButtonClick={handleButtonClick}
+          />)
+      case 3:
+        return <h1>Implementation Plan!</h1>
+      default:
+        return <h3>State not specified {stateIdx}</h3>
+    }
+  }
+
   return (
     <div>
       <div className="chat-container">
         <div className="message-container">
           <div className="message">
-            { 
-              /* This is for usecase agreement */
-              messages.length && messages.map((message, index) => (
-                <p key={index}>{message}</p>
-            ))
-            }
-            {
-               /* This is for upskilling plan*/ 
-              (props.stateIdx == 2 && Object.keys(plan).length > 0) && (
-              <div>
-                <h1>{plan.header}</h1>
-                {
-                  plan.steps.map((step, idx) => {
-                    return ( idx == 0 ? (
-                        <div className="step-active">
-                          <h3 className="highlight">{step.title}</h3>
-                          <h4 className="highlight">{step.length}</h4>
-                          <p>Your goals are as follows:</p>
-                          <ol>
-                            {
-                              step.goals.map((goal, goalIdx) => {
-                                return <li key={goalIdx}>{goal}</li>
-                              })
-                            }
-                          </ol>
-                          <p>{step.submission}</p>
-                          <h4>Recommended Resources:</h4>
-                          <ul>
-                            {
-                              step.resources.map((resource, resourceIdx) => (
-                                <li key={resourceIdx}><u className="highlight">{resource.title}</u> {resource.len} </li>
-                              ))
-                            }
-                          </ul>
-                          <ButtonContainer
-                                stateIdx={props.stateIdx}
-                                handleButtonClick={handleButtonClick}
-                                messages={messages}
-                                submitEvidence={submitEvidence}
-                                handleProgress={handleProgress}
-                                setLoadingState={setLoadingState}
-                                error={error}
-                                setError={setError}
-                                submitMsg={submitMsg}
-                                setFileName={setFileName}
-                                fileName={fileName}
-                                success={success}
-                              />
-                        </div>
-                      ) : (
-                        <div className="step-inactive">
-                          <div className="step-body">
-                            <span className="step-title">{step.title}</span>
-                            <span className="step-time">{step.length}</span>
-                          </div>
-                          <div className="open-icon">
-                            <i className="fa-solid fa-arrow-up-right-from-square"></i>
-                          </div>
-                        </div>
-                      )
-                    )
-                  })
-                }
-              </div> 
-              )
-            }
+            <p>{introEmployee}</p>
           </div>
-        </div>
-        {loadingState ? (
-          <div className="loader-dots">One moment please</div>
-        ) : (
-          <div>
-          {success && <h1>Well done!</h1>}
-          {props.stateIdx == 2 && <ProgressBar percentage={percentage} />}
-          {props.stateIdx == 1 && <ButtonContainer
-            stateIdx={props.stateIdx}
-            handleButtonClick={handleButtonClick}
-            messages={messages}
-            submitEvidence={submitEvidence}
-            handleProgress={handleProgress}
-            setLoadingState={setLoadingState}
-            error={error}
-            setError={setError}
-            submitMsg={submitMsg}
-            setFileName={setFileName}
-            fileName={fileName}
-            success={success}
-          />
+          {
+            !loadingState && (
+              <div className="message">
+                {renderState(props.stateIdx)}
+              </div>
+            )
           }
-          </div>
-        )}
+        </div>
+        {
+          loadingState && (
+            <div className="loader-dots">One moment please</div>
+          ) 
+        }
       </div>
     </div>
   );

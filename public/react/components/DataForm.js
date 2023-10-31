@@ -25,10 +25,10 @@ export const DataForm = (props) => {
     <div className="data-form">
       <h3>I can help you with that.</h3> 
       <p>Could you state relevant data sources? Here are some common data sources:</p>
-        <p class="highlight data-source">- US Census Bureau</p >
-        <p class="highlight data-source">- Bureau of Labor Statistics</p>
-        <p class="highlight data-source">- Data.gov</p>
-        <p class="highlight data-source">- Nielson</p>
+        <p className="highlight data-source">- US Census Bureau</p >
+        <p className="highlight data-source">- Bureau of Labor Statistics</p>
+        <p className="highlight data-source">- Data.gov</p>
+        <p className="highlight data-source">- Nielson</p>
       <div className="input-container">
         <input
           type="text"

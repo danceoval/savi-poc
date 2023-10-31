@@ -39,7 +39,7 @@ export const ButtonContainer = (props) => {
 
   const renderButtons = () => {
     switch (props.stateIdx) {
-      case 1:
+      case 2:
         return (
           <div>
             <button onClick={props.handleButtonClick}>
@@ -50,7 +50,7 @@ export const ButtonContainer = (props) => {
             </button>
           </div>
         );
-      case 2:
+      case 3:
         return (
           <div className="evidence-container">
             {props.fileName && (<h4 className="highlight">{props.fileName}</h4>)}
@@ -63,7 +63,7 @@ export const ButtonContainer = (props) => {
             />
           </div>
         );
-      case 3:
+      case 4:
         return (
           <div>
             <div className="evidence-container">

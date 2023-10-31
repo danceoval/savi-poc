@@ -14,24 +14,18 @@ which means you will save 26 hours per month if you implement this use case!
 </p>
 `;
 
-const usecaseArr = [
-`
-Thank you for answering the questions.
-`,
-`
-Based on your answers, we’d like to recommend using HuggingFace to streamline your ESG research process. 
-Using HuggingFace, you can easily generate data mining scripts to extract and synthesize a large amount of information from various sources such as 
-MSCI ESG Ratings, The Carbon Disclosure Project, Refinitiv, The World Bank’s Sovereign ESG Portal. 
-`,
-`
-This use case takes only 3 hours to learn & implement and makes research 41% more efficient according to users similar to you, 
-which means you will save 26 hours per month if you implement this use case!
-`
-]
+const usecaseObj = {
+  text : [
+  "Okay, all of the data you state above are accessible via the Internet, so we will create a Python script to mine data from the relevant sources. You will then use NLP to summarize the consolidated data.", 
+  "Worry not, you do not actually have to code anything! We will use Huggingface to generate a Python script. We will then leverage a pre-trained model for text and numerical data summarization from the Hugging Face Transformers library to generate a much higher-quality summary than what you would have gotten from an unspecialized AI model. Does that sound good to you?" 
+
+  ],
+  time : 'All of the above will take approximately 33 min in total. '
+}
 
 const dataSourcesObj = {
-  header : "I can help you with that. Could you state relevant data sources? Here are some common data sources:"
-  sources = [
+  header : "I can help you with that. Could you state relevant data sources? Here are some common data sources:",
+  sources : [
     "US Census Bureau",
     "Web scraping",
     "Bureau of Labor Statistics",
@@ -164,4 +158,4 @@ const planStart = `
 </div>
 `;
 
-module.exports = { usecaseArr, planObj, dataSourcesObj}
+module.exports = { usecaseObj, planObj, dataSourcesObj}
