@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import {ButtonContainer} from './ButtonContainer';
 import {ProgressBar} from './ProgressBar';
-import {UseCase} from './UseCase'
+import {UseCase} from './UseCase';
+import {ImplementationPlan} from './ImplementationPlan';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
@@ -25,11 +26,11 @@ export const Chatbot = (props) => {
   const handleButtonClick = () => {
     let message;
 
-    if (props.stateIdx == 1) { // Set UseCase
-      props.setStateIdx(2)
-      socket.emit('start-plan', {})
-    } else { // Show Project
+    if (props.stateIdx == 2) { // Start Implementation
       props.setStateIdx(3)
+      socket.emit('start-plan', {})
+    } else { // Next Step
+      props.setStateIdx(4)
     } 
     setLoadingState(true); // Set loading to true when sending message
   };
@@ -92,9 +93,25 @@ export const Chatbot = (props) => {
             handleButtonClick={handleButtonClick}
           />)
       case 3:
-        return <h1>Implementation Plan!</h1>
+        return (<ImplementationPlan
+            stateIdx={stateIdx}
+            handleButtonClick={handleButtonClick}
+            plan={plan}
+            percentage={percentage}
+            setPercentage={setPercentage}
+            error={error}
+            setError={setError}
+            fileName={fileName}
+            success={success}
+            submitEvidence={submitEvidence}
+            setFileName={setFileName}
+            fileName={fileName}
+            handleProgress={handleProgress}
+            setLoadingState={setLoadingState}
+            submitMsg={submitMsg}
+          />)
       default:
-        return <h3>State not specified {stateIdx}</h3>
+        return <h3>Error: State not specified - #{stateIdx}</h3>
     }
   }
 
@@ -105,18 +122,17 @@ export const Chatbot = (props) => {
           <div className="message">
             <p>{introEmployee}</p>
           </div>
-          {
-            !loadingState && (
-              <div className="message">
-                {renderState(props.stateIdx)}
-              </div>
-            )
-          }
+          <div className="message">
+            {renderState(props.stateIdx)}
+          </div>
         </div>
         {
           loadingState && (
             <div className="loader-dots">One moment please</div>
           ) 
+        }
+        {
+          (!loadingState && props.stateIdx == 3) && <ProgressBar percentage={percentage}/>
         }
       </div>
     </div>
