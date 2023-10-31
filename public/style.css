@@ -109,6 +109,27 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+option {
+  font-size: 1.5em;
+    color: #242456;
+    font-family: 'Lato';
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
 /* Styling for the button group */
 .button-group {
   display: flex;
