@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import { QuestionForm } from './QuestionForm'
+import { DataForm } from './DataForm'
 import { Chatbot } from './Chatbot';
 import logo from '../images/logo.svg'
 
@@ -16,10 +17,16 @@ export const App = () => {
   return (
     <div className="App">
       <img src={logo} id="logo" />
-      {
-        stateIdx === 0 ? < QuestionForm setInfo={setInfo} setStateIdx={setStateIdx}/> : < Chatbot setStateIdx={setStateIdx} stateIdx={stateIdx} />
-      }
-
+      {(() => {
+        switch(stateIdx){
+          case 0:
+            return < QuestionForm setInfo={setInfo} setStateIdx={setStateIdx}/>
+          case 1:
+            return <DataForm setStateIdx={setStateIdx} stateIdx={stateIdx}/>
+          default:
+            return < Chatbot setStateIdx={setStateIdx} stateIdx={stateIdx} />
+        }
+      })()}
     </div>
   );
 }

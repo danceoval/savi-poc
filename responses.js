@@ -29,6 +29,17 @@ which means you will save 26 hours per month if you implement this use case!
 `
 ]
 
+const dataSourcesObj = {
+  header : "I can help you with that. Could you state relevant data sources? Here are some common data sources:"
+  sources = [
+    "US Census Bureau",
+    "Web scraping",
+    "Bureau of Labor Statistics",
+    "Data.gov",
+    "Nielsen"
+  ]
+}
+
 const planObj = {
   header: "Project: HuggingFace to streamline ESG research process",
   steps: [
@@ -153,4 +164,4 @@ const planStart = `
 </div>
 `;
 
-module.exports = { usecaseArr, planObj}
+module.exports = { usecaseArr, planObj, dataSourcesObj}
