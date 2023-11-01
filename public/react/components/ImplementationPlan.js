@@ -20,8 +20,6 @@ export const ImplementationPlan = (props) => {
     submitMsg 
   } = props;
 
-  console.log("PROPS IN IMPLEMENTATIONL ", props);
-
   return (
     <div>
      {
@@ -42,15 +40,8 @@ export const ImplementationPlan = (props) => {
                           })
                         }
                       </ol>
+                      <h4>Submission Guidelines:</h4>
                       <p>{step.submission}</p>
-                      <h4>Recommended Resources:</h4>
-                      <ul>
-                        {
-                          step.resources.map((resource, resourceIdx) => (
-                            <li key={resourceIdx}><u className="highlight">{resource.title}</u> {resource.len} </li>
-                          ))
-                        }
-                      </ul>
                       <ButtonContainer
                             stateIdx={props.stateIdx}
                             handleButtonClick={handleButtonClick}

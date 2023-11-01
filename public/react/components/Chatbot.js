@@ -35,19 +35,6 @@ export const Chatbot = (props) => {
     setLoadingState(true); // Set loading to true when sending message
   };
 
-
-
-  const addNewLineAfterSentences = (inputString) => {
-    // Split the input string into an array of sentences
-    const sentences = inputString.split(/[.!?:]/);
-
-    // Filter out empty strings and join the sentences with a new line
-    const result = sentences
-      .filter((sentence) => sentence.trim() !== '')
-      .join('.\n');
-    return result;
-  };
-
   const submitEvidence = (file) => {
     setNewMessage('');
     handleProgress(12);
@@ -62,7 +49,6 @@ export const Chatbot = (props) => {
   };
 
 
-
   useEffect(() => {
     socket.emit('userConnected', '');
 
@@ -72,7 +58,6 @@ export const Chatbot = (props) => {
     })
 
     socket.on('response-plan', (message) => {
-      console.log("IS THIS THE obj?", message)
       setPlan(message)
       setLoadingState(false); // Turn off loading when response received
     });
