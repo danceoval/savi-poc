@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
   socket.on('userConnected', async (info) => {
     setTimeout(() => {
       io.emit('response-usecase', usecaseObj); // Broadcast the message to front-end
-    }, 2700);
+    }, 7200);
   })
 
   // Second step: Show Upskilling Plan

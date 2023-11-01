@@ -194,6 +194,11 @@ input[type="text"] {
   background-color: #4a49c9;
 }
 
+.evidence-container button {
+  margin-left: 0;
+  width: 15em;
+}
+
 
 .step-inactive {
   border-top: 2px solid #242456;

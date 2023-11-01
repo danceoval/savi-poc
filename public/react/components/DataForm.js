@@ -1,34 +1,54 @@
 import React, { useState } from 'react';
 
 export const DataForm = (props) => {
-  const [dataSources, setDataSources] = useState([]);
+  const [selectedDataSources, setSelectedDataSources] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [submittedDataSources, setSubmittedDataSources] = useState([]);
-  
+  const commonDataSources = [
+    'US Census Bureau',
+    'Bureau of Labor Statistics',
+    'Data.gov',
+    'Nielson',
+  ];
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleAddDataSource = () => {
     if (inputValue.trim() !== '') {
-      setDataSources([...dataSources, inputValue]);
+      setSelectedDataSources([...selectedDataSources, inputValue]);
       setInputValue('');
     }
   };
 
+  const handleCheckBoxChange = (source) => {
+    const updatedDataSources = selectedDataSources.includes(source)
+      ? selectedDataSources.filter((s) => s !== source)
+      : [...selectedDataSources, source];
+
+    setSelectedDataSources(updatedDataSources);
+  };
+
   const handleSubmit = () => {
-    setSubmittedDataSources(dataSources);
+    setSubmittedDataSources(selectedDataSources);
     props.setStateIdx(props.stateIdx + 1);
   };
 
   return (
     <div className="data-form">
-      <h3>I can help you with that.</h3> 
+      <h3>I can help you with that.</h3>
       <p>Could you state relevant data sources? Here are some common data sources:</p>
-        <p className="highlight data-source">- US Census Bureau</p >
-        <p className="highlight data-source">- Bureau of Labor Statistics</p>
-        <p className="highlight data-source">- Data.gov</p>
-        <p className="highlight data-source">- Nielson</p>
+      {commonDataSources.map((source) => (
+        <p key={source} className="highlight data-source">
+          <input
+            type="checkbox"
+            checked={selectedDataSources.includes(source)}
+            onChange={() => handleCheckBoxChange(source)}
+          />
+          {source}
+        </p>
+      ))}
       <div className="input-container">
         <input
           type="text"
@@ -41,12 +61,18 @@ export const DataForm = (props) => {
       <div className="submitted-data">
         <h3>Your Data Sources:</h3>
         <div>
-          {dataSources.map((source, index) => (
-            <p key={index} className="data-source">{source}</p>
-          ))}
+          {selectedDataSources.map((source, index) => (
+            <p key={index} className="data-source">
+              {source}
+            </p>
+          ))
+        }
         </div>
       </div>
-      <button className="submit" onClick={handleSubmit}>Submit</button>
+      <button className="submit" onClick={handleSubmit}>
+        Submit
+      </button>
     </div>
   );
 };
+
