@@ -46,7 +46,7 @@ export const ButtonContainer = (props) => {
               Agree
             </button>
             <button >
-              Recommend another suitable use case
+              Refine suggestion
             </button>
           </div>
         );

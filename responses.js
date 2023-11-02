@@ -1,7 +1,8 @@
 const usecaseObj = {
+  header : "Data Consolidation with HuggingFace"
   text : [
   "Okay, all of the data you state above are accessible via the Internet, so we will create a Python script to mine data from the relevant sources. You will then use NLP to summarize the consolidated data.", 
-  "Worry not, you do not actually have to code anything! We will use Huggingface to generate a Python script. We will then leverage a pre-trained model for text and numerical data summarization from the Hugging Face Transformers library to generate a much higher-quality summary than what you would have gotten from an unspecialized AI model. Does that sound good to you?" 
+  "Worry not, you do not actually have to code anything! We will use HuggingFace to generate a Python script. We will then leverage a pre-trained model for text and numerical data summarization from the HuggingFace Transformers library to generate a much higher-quality summary than what you would have gotten from an unspecialized AI model. Does that sound good to you?" 
 
   ],
   time : 'All of the above will take approximately 33 min in total. '
@@ -10,16 +11,15 @@ const usecaseObj = {
 const dataSourcesObj = {
   header : "I can help you with that. Could you state relevant data sources? Here are some common data sources:",
   sources : [
-    "US Census Bureau",
-    "Web scraping",
-    "Bureau of Labor Statistics",
-    "Data.gov",
-    "Nielsen"
+    "US Census Bureau: general population data",
+    "Bureau of Labor Statistics: labor data",
+    "Data.gov: open Data sources by the U.S. government ",
+    "Nielsen: market research data"
   ]
 }
 
 const planObj = {
-  header: "Project: HuggingFace to streamline ESG research process",
+  header: "Project: Data Consolidation",
   steps: [
     {
       title: "Step 1: Getting Started with HuggingFace",
