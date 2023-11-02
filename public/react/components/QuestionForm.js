@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 
 export const QuestionForm = (props) => {
   const options = [
-    "I spend a lot of time manually consolidating data in various formats across disparate sources",
-    "I spent a lot of time manually summarizing a large amount of data to derive meaningful insights",
-    "I spend a lot of time performing rule-based, repetitive, highly standardized tasks"
+    {
+      title: 'Data Consolidation',
+      desc: 'automatically consolidate diverse data across disparate sources',
+    },
+    {
+      title: 'Summarization',
+      desc: 'automatically summarize a large amount of information to derive meaningful insights',
+    },
+    {
+      title: 'Automation',
+      desc: 'automate rule-based, repetitive, highly standardized tasks',
+    },
   ];
+
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [dataSources, setDataSources] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +49,7 @@ export const QuestionForm = (props) => {
     if (selectedOptions.length > 0) {
       props.setStateIdx(1);
     } else {
-      alert("Please select at least one option before submitting.");
+      alert('Please select at least one option before submitting.');
     }
   };
 
@@ -47,22 +57,23 @@ export const QuestionForm = (props) => {
     <form className="help-form" onSubmit={handleSubmit}>
       <div className="question">
         <p>What do you need help with?</p>
-        <select
-          multiple
-          value={selectedOptions}
-          onChange={handleOptionChange}
-        >
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        {options.map((option, index) => (
+          <div key={option.title}>
+            <label>
+              <input
+                type="checkbox"
+                value={option.title}
+                checked={selectedOptions.includes(option.title)}
+                onChange={handleOptionChange}
+              />
+              {option.title}: {option.desc}
+            </label>
+          </div>
+        ))}
         <p>Selected Options: </p>
         <div>
-        {
-          (selectedOptions.length > 0) && selectedOptions.map((opt, i) => <p key={i}>{opt}</p>)
-        }
+          {selectedOptions.length > 0 &&
+            selectedOptions.map((opt, i) => <p key={i}>{opt}</p>)}
         </div>
       </div>
       <div className="button-container">

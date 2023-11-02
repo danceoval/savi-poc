@@ -3,10 +3,10 @@ import {ButtonContainer} from './ButtonContainer'
 
 export const UseCase = (props) => {
 	const {useCase} = props;
-	console.log("PROPS IN USECASE", props)
 	return (
 		<div>
 			<div>
+			<h1>{useCase.header}</h1>
 			{
 				useCase.hasOwnProperty("text") && useCase.text.map((t, i) => <p key={i}>{t}</p>)
 			}

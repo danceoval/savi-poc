@@ -5,10 +5,10 @@ export const DataForm = (props) => {
   const [inputValue, setInputValue] = useState('');
   const [submittedDataSources, setSubmittedDataSources] = useState([]);
   const commonDataSources = [
-    'US Census Bureau',
-    'Bureau of Labor Statistics',
-    'Data.gov',
-    'Nielson',
+    "US Census Bureau: general population data",
+    "Bureau of Labor Statistics: labor data",
+    "Data.gov: open Data sources by the U.S. government ",
+    "Nielsen: market research data"
   ];
 
   const handleInputChange = (event) => {
