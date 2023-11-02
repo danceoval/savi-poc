@@ -21,6 +21,22 @@
   color: #4a49c9;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.checkbox-container {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 25%;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  margin-left: 10px; /* Add padding between checkbox and text */
+}
+
 .message {
   padding: 10px;
   margin-bottom: 5px;

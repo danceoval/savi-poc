@@ -56,21 +56,21 @@ export const QuestionForm = (props) => {
   return (
     <form className="help-form" onSubmit={handleSubmit}>
       <div className="question">
-        <p>What do you need help with?</p>
+        <h2>What do you need help with?</h2>
         {options.map((option, index) => (
-          <div key={option.title}>
-            <label>
+          <div key={option.title} className="checkbox-container">
+            <label className="checkbox-label">
               <input
                 type="checkbox"
                 value={option.title}
                 checked={selectedOptions.includes(option.title)}
                 onChange={handleOptionChange}
               />
-              {option.title}: {option.desc}
+              <span className="highlight bold">{option.title}:</span> {option.desc}
             </label>
           </div>
         ))}
-        <p>Selected Options: </p>
+        <h3>Selected Options: </h3>
         <div>
           {selectedOptions.length > 0 &&
             selectedOptions.map((opt, i) => <p key={i}>{opt}</p>)}
