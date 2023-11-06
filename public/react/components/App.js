@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-
 import { QuestionForm } from './QuestionForm'
 import { DataForm } from './DataForm'
 import { Chatbot } from './Chatbot';
 import logo from '../images/logo.svg'
 
 
-export const App = () => {
+const App = () => {
   const states = ['survey', 'use-case', 'plan', 'next'];
 
   const [view, setView] = useState('survey');
@@ -30,5 +29,7 @@ export const App = () => {
     </div>
   );
 }
+
+export default App
 
 

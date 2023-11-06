@@ -1,7 +1,7 @@
 const usecaseObj = {
-  header : "Data Consolidation with HuggingFace"
+  header : "Data Consolidation",
   text : [
-  "Okay, all of the data you state above are accessible via the Internet, so we will create a Python script to mine data from the relevant sources. You will then use NLP to summarize the consolidated data.", 
+  "Okay, all of the data sources you've shared above are accessible via the Internet, so we will create a Python script to mine data from the relevant sources. You will then use NLP to summarize the consolidated data.", 
   "Worry not, you do not actually have to code anything! We will use HuggingFace to generate a Python script. We will then leverage a pre-trained model for text and numerical data summarization from the HuggingFace Transformers library to generate a much higher-quality summary than what you would have gotten from an unspecialized AI model. Does that sound good to you?" 
 
   ],
@@ -55,7 +55,7 @@ const planObj = {
       resources : null
     },
     {
-      title: "Step 5:  Use a pre-trained model in Huggingface to summarize your data",
+      title: "Step 5:  Use a pre-trained model in HuggingFace to summarize your data",
       length: "Estimated Time: 9 mins",
       goals : null,
       submission: null,

@@ -66,6 +66,7 @@ export const ButtonContainer = (props) => {
       case 4:
         return (
           <div>
+            <h4 className="highlight">Well Done!</h4>
             <div className="evidence-container">
               <button onClick={props.handleButtonClick}>
                 Begin Next Stage
