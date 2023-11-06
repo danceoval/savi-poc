@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "chart.js": "^4.4.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -28,10 +29,12 @@
     "pg-hstore": "^2.3.4",
     "prompt-sync": "^4.2.0",
     "react": "^17.0.2",
+    "react-chartjs-2": "^5.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.3.4",
     "readline-sync": "^1.4.10",
+    "recharts": "^2.9.3",
     "sequelize": "^6.32.1",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2"

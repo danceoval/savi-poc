@@ -1,7 +1,13 @@
 import React from 'react';
+import ProgressLineChart from './ProgressLineChart';
 
 const Dashboard = () => {
-	return <h1>ROI Dashboard</h1>
+  return (
+    <div>
+      <h2>Progress Tracking</h2>
+      <ProgressLineChart  />
+    </div>
+  );
 };
 
-export default Dashboard
+export default Dashboard;
