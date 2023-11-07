@@ -7,7 +7,7 @@ import {ImplementationPlan} from './ImplementationPlan';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
-export const Chatbot = (props) => {
+export const ImplementationContainer = (props) => {
   const introManager = `Hello, I am Savi! As your trusted assistant, your team will unlock a new realm of unparalleled efficiency, effectiveness, and performance.`;
 
   const introEmployee = `Hello, I am Savi! As your trusted coach, I will guide you to using AI in your role!`;
@@ -102,7 +102,7 @@ export const Chatbot = (props) => {
 
   return (
     <div>
-      <div className="chat-container">
+      <div className="container">
         <div className="message-container">
           <div className="message">
             <p>{introEmployee}</p>

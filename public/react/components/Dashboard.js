@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProgressLineChart from './ProgressLineChart';
 import UseCaseChart from './UseCaseChart';
 import ROIChart from './ROIChart';
@@ -21,6 +22,16 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
+      <nav>
+        <div className="nav-menu">
+          <div className="nav-item">
+            <Link to="/">Home</Link>
+          </div>
+          <div className="nav-item">
+            <Link to="/dashboard">Dashboard</Link>
+          </div>
+        </div>
+      </nav>
       <h1>Data Visualization Dashboard</h1>
 
       <div className="nav-menu">

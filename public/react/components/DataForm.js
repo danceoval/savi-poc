@@ -48,7 +48,7 @@ export const DataForm = (props) => {
   };
 
   return (
-    <div className="help-form">
+    <div className="help-form container">
       <div className="question">
         <h2>I can help you with that.</h2>
         <h3>Could you state relevant data sources? Here are some common data sources:</h3>
@@ -86,9 +86,11 @@ export const DataForm = (props) => {
           }
           </div>
         </div>
-      <button className="submit" onClick={handleSubmit}>
-        Submit
-      </button>
+        <div className="button-container">
+          <button  onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
     </div>
   );
 };

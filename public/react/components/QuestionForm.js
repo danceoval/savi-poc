@@ -54,7 +54,7 @@ export const QuestionForm = (props) => {
   };
 
   return (
-    <form className="help-form" onSubmit={handleSubmit}>
+    <form className="help-form container" onSubmit={handleSubmit}>
       <div className="question">
         <h2>What do you need help with?</h2>
         {options.map((option, index) => (
