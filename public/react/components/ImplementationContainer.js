@@ -23,6 +23,7 @@ export const ImplementationContainer = (props) => {
   const [submitMsg, setSubmitMsg] = useState('Submit Scraped Data')
   const [fileName, setFileName] = useState('')
   const [success, setSuccess] = useState(false);
+  const [feedback, setFeedback] = useState('');
 
   const handleButtonClick = () => {
     let message;
@@ -49,6 +50,11 @@ export const ImplementationContainer = (props) => {
     }
   };
 
+  const askForHelp = (question) => {
+    socket.emit('get-help', question)
+    setLoadingState(true)
+  }
+
 
   useEffect(() => {
     socket.emit('userConnected', '');
@@ -62,6 +68,11 @@ export const ImplementationContainer = (props) => {
       setPlan(message)
       setLoadingState(false); // Turn off loading when response received
     });
+
+    socket.on('set-help', (message) => {
+      setFeedback(message);
+      setLoadingState(false); // Turn off loading when response received
+    })
 
 
     return () => {
@@ -121,7 +132,7 @@ export const ImplementationContainer = (props) => {
           (!loadingState && props.stateIdx == 3) && <ProgressBar percentage={percentage}/>
         }
         {
-          (!loadingState && props.stateIdx == 3) &&  <Chatbox />
+          (!loadingState && props.stateIdx == 3) &&  <Chatbox loadingState={loadingState} setLoadingState={setLoadingState} feedback={feedback} askForHelp={askForHelp} />
         }
       </div>
     </div>

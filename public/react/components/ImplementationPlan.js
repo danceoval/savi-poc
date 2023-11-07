@@ -29,7 +29,7 @@ export const ImplementationPlan = (props) => {
             {
               plan.steps.map((step, idx) => {
                 return ( idx == 0 ? (
-                    <div className="step-active">
+                    <div className="step-active" key={idx}>
                       <h3 className="highlight">{step.title}</h3>
                       <h4 className="highlight">{step.length}</h4>
                       <p>Your goals are as follows:</p>
@@ -57,7 +57,7 @@ export const ImplementationPlan = (props) => {
                           />
                     </div>
                   ) : (
-                    <div className="step-inactive">
+                    <div className="step-inactive" key={idx}>
                       <div className="step-body">
                         <span className="step-title">{step.title}</span>
                         <span className="step-time">{step.length}</span>

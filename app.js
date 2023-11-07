@@ -40,6 +40,12 @@ io.on('connection', (socket) => {
     }, 8800);
   })
 
+  socket.on('get-help', async () => {
+    setTimeout(() => {
+      io.emit('set-help', 'Get better that this!!');
+    }, 5800);
+  })
+
 
 
   socket.on('disconnect', () => {
