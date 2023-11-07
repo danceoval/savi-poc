@@ -12,6 +12,47 @@
   font-family: "Open Sans", sans-serif;
 }
 
+/* Dashboard.css */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #242456;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.nav-item {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  margin: 0 10px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.nav-item:hover {
+  background-color: #4a49c9
+  border-color: #4a49c9;
+  color: white;
+}
+
+.active {
+  background-color: #242456;
+  border-color: #242456;
+  color: white;
+}
+
+
 /* Styling for chat messages */
 .message-container {
   margin-bottom: 20px;

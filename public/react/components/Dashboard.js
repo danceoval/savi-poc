@@ -1,17 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProgressLineChart from './ProgressLineChart';
 import UseCaseChart from './UseCaseChart';
 import ROIChart from './ROIChart';
 
 const Dashboard = () => {
+  const [selectedChart, setSelectedChart] = useState('progress');
+
+  const renderChart = () => {
+    switch (selectedChart) {
+      case 'progress':
+        return <ProgressLineChart />;
+      case 'use-cases':
+        return <UseCaseChart />;
+      case 'roi':
+        return <ROIChart />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div>
-      <h2>Progress Tracking</h2>
-      <ProgressLineChart  />
-      <h2>Use Cases</h2>
-      <UseCaseChart  />
-      <h2>ROI</h2>
-      <ROIChart  />
+    <div className="dashboard-container">
+      <h1>Data Visualization Dashboard</h1>
+
+      <div className="nav-menu">
+        <div
+          className={`nav-item ${selectedChart === 'progress' ? 'active' : ''}`}
+          onClick={() => setSelectedChart('progress')}
+        >
+          Progress Chart
+        </div>
+        <div
+          className={`nav-item ${selectedChart === 'use-cases' ? 'active' : ''}`}
+          onClick={() => setSelectedChart('use-cases')}
+        >
+          Use Cases
+        </div>
+        <div
+          className={`nav-item ${selectedChart === 'roi' ? 'active' : ''}`}
+          onClick={() => setSelectedChart('roi')}
+        >
+          ROI
+        </div>
+      </div>
+
+      {renderChart()}
     </div>
   );
 };
