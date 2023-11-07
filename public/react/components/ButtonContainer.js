@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 
+import { Chatbox } from './Chatbox';
+
 export const ButtonContainer = (props) => {
   const fileInputRef = useRef(null);
   const [submitted, setSubmitted] = useState(false)

@@ -4,6 +4,7 @@ import {ButtonContainer} from './ButtonContainer';
 import {ProgressBar} from './ProgressBar';
 import {UseCase} from './UseCase';
 import {ImplementationPlan} from './ImplementationPlan';
+import { Chatbox } from './Chatbox';
 
 const socket = io('http://localhost:3000'); // Connect to the server's address
 
@@ -118,6 +119,9 @@ export const ImplementationContainer = (props) => {
         }
         {
           (!loadingState && props.stateIdx == 3) && <ProgressBar percentage={percentage}/>
+        }
+        {
+          (!loadingState && props.stateIdx == 3) &&  <Chatbox />
         }
       </div>
     </div>
