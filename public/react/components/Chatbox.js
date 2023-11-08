@@ -18,13 +18,14 @@ export const Chatbox = (props) => {
     <div>
       {
         !props.loadingState && (
-          <div>
+          <div className="chat-container">
            <h1>Chatbox</h1>
             { 
               props.feedback && (
                 <div>
-                  <h4>Feedback</h4>
-                  <p>{props.feedback}</p>
+                  <h3>{props.feedback.header}</h3>
+                  <p>{props.feedback.detail}</p>
+                  <h4 className="highlight">{props.feedback.instruction}</h4>
                 </div>
               )
             }

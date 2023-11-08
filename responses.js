@@ -64,5 +64,12 @@ const planObj = {
   ]
 }
 
+const feedbackObj = {
+  header : 'How to tweak your script:',
+  detail : `It looks like you need to install two libraries to help you scrape the web: BeautifulSoup and PDFKit. 
+   ("Beautiful Soup" is a web scraper, named after a passage in 'Alice in Wonderland', while pdfkit turns webpages to pdfs.`,
+  instruction : 'Make sure to include the following code on top of your Python code: !pip install requests beautifulsoup4 pdfkit'
+}
 
-module.exports = { usecaseObj, planObj, dataSourcesObj}
+
+module.exports = { usecaseObj, planObj, dataSourcesObj, feedbackObj}

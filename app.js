@@ -4,7 +4,7 @@ const socketIo = require('socket.io');
 
 const app = express();
 
-const {usecaseObj, planObj, dataSourcesObj} = require('./responses')
+const {usecaseObj, planObj, dataSourcesObj, feedbackObj} = require('./responses')
 
 const PORT = process.env.PORT || 3000;
 
@@ -42,7 +42,7 @@ io.on('connection', (socket) => {
 
   socket.on('get-help', async () => {
     setTimeout(() => {
-      io.emit('set-help', 'Get better that this!!');
+      io.emit('set-help', feedbackObj);
     }, 5800);
   })
 
